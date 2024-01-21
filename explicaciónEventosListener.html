@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Eventos</title>
+</head>
+<body>
+
+    <h1>Manejo de Eventos</h1>
+
+    <!-- Ejemplo de atributo HTML -->
+    <button onclick="mostrarMensajeAtributo()">Haz clic (Atributo HTML)</button>
+
+    <!-- Ejemplo de propiedad on[event] -->
+    <button id="botonPropiedad">Haz clic (Propiedad on[event])</button>
+
+    <!-- Ejemplo de attachEvent (para versiones antiguas de IE) -->
+    <!-- <button id="botonAttachEvent">Haz clic (attachEvent)</button> -->
+
+    <!-- Ejemplo de addEventListener y removeEventListener -->
+    <button id="botonEventListener">Haz clic (addEventListener)</button>
+
+    <script>
+        // Ejemplo de atributo HTML
+        function mostrarMensajeAtributo() {
+            alert('Evento manejado con atributo HTML');
+        }
+
+        // Ejemplo de propiedad on[event]
+        document.getElementById('botonPropiedad').onclick = function() {
+            alert('Evento manejado con propiedad on[event]');
+        };
+
+        // Ejemplo de attachEvent (para versiones antiguas de IE)
+        /* var botonAttachEvent = document.getElementById('botonAttachEvent');
+        botonAttachEvent.attachEvent('onclick', function() {
+            alert('Evento manejado con attachEvent (para versiones antiguas de IE)');
+        }); */
+
+        // Ejemplo de addEventListener y removeEventListener
+        var botonEventListener = document.getElementById('botonEventListener');
+        function handleClickEventListener() {
+            alert('Evento manejado con addEventListener');
+        }
+
+        botonEventListener.addEventListener('click', handleClickEventListener);
+
+        // Para remover el evento después de un tiempo
+        setTimeout(function() {
+            botonEventListener.removeEventListener('click', handleClickEventListener);
+        }, 5000);
+
+        /* La diferencia entre attachEvent y addEventListener es la compatibildiad con los navegadores, el primero es para versiones antiguas de internet explorar y el segundo es para todo lo demás */
+    </script>
+
+</body>
+</html>

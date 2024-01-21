@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var contactos = [
+            {
+                "nombre": "Nora",
+                "apellido": "Nav",
+                "numero": "0543236543",
+                "gustos": ["Pizza", "Programación"]
+            },
+            {
+                "nombre": "Harry",
+                "apellido": "Potter",
+                "numero": "0994372684",
+                "gustos": ["Hogwarts", "Magia"]
+            },
+            {
+                "nombre": "Sherlock",
+                "apellido": "Holmes",
+                "numero": "0487345643",
+                "gustos": ["Casos interesantes", "Violín"]
+            }
+        ];
+
+        function buscarPerfil(nombre, propiedad) {
+            for (const [index1, element] of contactos.entries()) {
+                if (element.nombre === nombre) {
+                    return element[propiedad] || "La propiedad no existe.";
+                }
+            }
+            return "El contacto no está en la lista."
+        }
+
+        console.log(buscarPerfil("Sherlock", "numero"))
+        console.log(buscarPerfil("Nora", "direccion"))
+        console.log(buscarPerfil("Marlon", "direccion"))
+
+        /* Números aleatorios */
+
+        function generarFraccionAleatoria() {
+            //Generar números aleatorios entre 0 y 1, pero 0 y 1 nunca van a ser una opción
+            return Math.random();
+        }
+
+        console.log(generarFraccionAleatoria())
+        console.log(generarFraccionAleatoria())
+        console.log(generarFraccionAleatoria())
+
+        var numeroAleatorio = Math.random();
+
+        console.log(numeroAleatorio)
+        console.log(numeroAleatorio)
+        console.log(numeroAleatorio)
+
+        /* Números aleatorios enteros */
+        /* con Math.random() se tiene números entre 0 y 1, cuando lo multiplciamos por 20, hacemos que ese número sea entre 0 y 20 */
+        var numeroAleatorioEntero = Math.floor(Math.random() * 20)
+
+        console.log(numeroAleatorioEntero)
+
+        function generarEnteroAleatorio(limiteSuperior) {
+            return Math.floor(Math.random() * limiteSuperior)
+        }
+
+        console.log(generarEnteroAleatorio(10))
+
+        /* Números aleatorios con un limite inferior y limite superior */
+
+        function rangoAleatorio(limiteInferior, limiteSuperior) {
+            return Math.floor(Math.random() * (limiteSuperior - limiteInferior + 1) + limiteInferior)
+        }
+
+        console.log(rangoAleatorio(4, 15))
+        console.log(rangoAleatorio(4, 15))
+
+        /* Generar número entero */
+
+        console.log(parseInt("5") + parseInt('1') + 1)
+
+        //NaN = Not a Number
+
+        /* Generar número entero con una base */
+
+        //En este caso se especifica que el string es un número binario, entonces se coloca un 2 para decir que es binario
+
+        console.log(parseInt("110111", 2))
+        console.log(parseInt(110111, 2))
+
+        //Hexadecimal
+
+        console.log(parseInt("3E0A", 16))
+        //console.log(parseInt(3E0A, 16)) Error
+
+        function retornarMinimo(x, y) {
+            return x < y ? x : y;
+        }
+
+        console.log(retornarMinimo(2, 0)) // 0
+        console.log(retornarMinimo(1, 4)) // 1
+
+        /* Varias condiciones con operadores */
+
+        function comprarNumeros(a, b) {
+            return a == b ? "a y b son iguales" : a > b ? "a es mayor que b" : "b es mayor que a"
+        }
+
+        console.log(comprarNumeros(11, 27)) // "b es mayor que a"
+
+        /* Mutar un arreglo const */
+
+        const unArreglomás = [1, 2, 3, 4]
+
+        unArreglomás[0] = 7
+
+        console.log(unArreglomás) // [7, 2, 3, 4]
+
+        /* Crear objeto inmutable */
+
+        let colores = {
+            verde: "#10e04b",
+            azul: "#1b50e0",
+            negro: "#000000",
+            blanco: "#ffffff",
+        }
+
+        Object.freeze(colores);
+
+        // colores.amarillo = "#fff200" //Error quedsaria como read-only
+
+        /* Funciones de flecha, se crean cuando usualmente se necesita crear funciones anónimas */
+        /* Funciones anónimas son funciones que no tienen un nombre específico*/
+        /* Es una función compacta */
+        const sumarTres = (xy) => xy + 3;
+
+        console.log(sumarTres(3))
+
+        const concatenar = (arr1, arr2) => arr1.concat(arr2);
+
+        console.log(concatenar([1, 2], [3, 4, 5]));
+
+        const incrementar = (num = 1, valor) => {
+            return num + valor
+        };
+
+        console.log(incrementar(undefined, 2)) // 3
+
+        //esto hace que los parametros dados en el llamado de la función se agreguen en un tipo de arreglo
+        //los 3 puntos ... se llama operador rest
+        function miFuncion(...variable) {
+            console.log(variable)
+        }
+
+        miFuncion(1, 2, 3, 4); // [1, 2, 3, 4]
+
+        //Operador spread, lo que hace es descomponer un array y colocarlo en las variables que recibe la función como parametros
+        //Se coloca al llamar la función y no en los parámetros de la función como tal
+
+        const operadorSpread = (x, y, z) => {
+            console.log(x)
+            console.log(y)
+            console.log(z)
+            return x + y + z;
+        }
+
+        console.log(operadorSpread(...[1, 2, 3])) // 6
+
+        //Sintaxis de desestructuración nos permite asignar las propiedades de un objeto a una variable
+
+        const usuario = {
+            nombre: "Sköll Muñoz Calderón",
+            edad: 34
+        };
+        //esto se puede simplificar
+        /* const nombre = usuario.nombre;
+        const edad = usuario.edad */
+
+        //a esto
+
+        const { nombre, edad } = usuario;
+
+        var coordenadas = {
+            xl: 4,
+            yl: 6,
+            zl: 12,
+        }
+
+        const { xl, yl, zl } = coordenadas;
+
+        console.log(xl)
+
+        //Desestructuración de objetos anidados
+
+        const usuarioL = {
+            johnDoe: {
+                edadl: 27,
+                correo: "ajlshbd@ajks.com"
+            }
+        }
+
+        const { johnDoe: { edadl, correo } } = usuarioL;
+        const { johnDoe: { edadl: edadDelUsuario, correo: correoDelUsuario } } = usuarioL;
+
+        console.log(edadl)
+        console.log(edadDelUsuario)
+        console.log(correoDelUsuario)
+        console.log(correo)
+
+        //Desestructuración de arreglos anidados
+
+        var ahj;
+        var bhj;
+        var chj;
+
+        [ahj, bhj, , , chj] = [1, 2, 3, 4, 5, 6]
+
+        console.log(ahj, bhj, chj) // 1, 2, 5
+
+        var ahk = 4;
+        var bhk = 7;
+
+        [bhk, ahk] = [ahk, bhk]
+
+        console.log(ahk, bhk) // 7, 4
+
+        //Desestructuración con el operador rest
+
+        var ahl;
+        var bhl;
+        var arryai;
+
+        [ahl, bhl, ...arryai] = [1, 2, 3, 4, 5, 6, 7];
+
+        console.log(ahl) // 1
+        console.log(bhl) // 2
+        console.log(arryai) // [3, 4, 5, 6, 7]
+
+        //Remover los 3 primeros elementos
+        var arregloInicialRemover = [1, 2, 3, 4, 5, 6, 7, 8];
+
+        function removerTresPrimerosElementos(arrr) {
+            const [, , , ...nuevoArregloa] = arrr
+            return nuevoArregloa
+        }
+
+        console.log(removerTresPrimerosElementos(arregloInicialRemover)) // [4, 5, 6, , 7, 8]
+
+        //Sintaxis de desestructuración: Pasar objeto como argumento
+
+        var nuevoPerfilCliente = {
+            nombrek: "John Doe",
+            edadk: 24,
+            nacionalidadk: "Española",
+            ubicacionk: "España"
+        }
+
+        const descomponerPerfil = ({ nombrek, edadk, nacionalidadk, ubicacionk }) => {
+            console.log(nombrek)
+            console.log(edadk)
+            console.log(nacionalidadk)
+            console.log(ubicacionk)
+
+        }
+
+        descomponerPerfil(nuevoPerfilCliente)
+
+        //En esta función se va a asignar directamente las variables max y min del objeto gracias a la desestructuración de objetos en el parámetro de la función
+        const estadisticas = {
+            max: 56.78,
+            desviacionEstandas: 4.34,
+            mediana: 34.4,
+            moda: 23.87,
+            min: -0.75,
+            promedio: 35.85
+        };
+
+        const mitad = ({ max, min }) => (max + min) / 2.0;
+
+        console.log(mitad(estadisticas)) // 28.015
+
+        // Backtick `` pueden contener coomillas simples y dobles, las lineas se preservan como se escribe en el código, se puede colocar una variable usando ${variable} y dentro de ${} puedes escribir expresiones
+        var atr = 6;
+
+        console.log(`El valor de atr es ${atr}`) // El valor de atr es 6
+
+        var miNombreq = "Camilo";
+        var miEdadQ = 26;
+
+        console.log(`mi nombre es ${miNombreq} y mi edad es ${miEdadQ}`) //mi nombre es Camilo y mi edad es 6
+
+        console.log(`El arreglo es ${arregloInicialRemover}`) // El arreglo es 1, 2, 3, 4, 5, 6, 7, 8
+        console.log(`El arreglo es ${JSON.stringify(arregloInicialRemover)}`) // El arreglo es [1,2,3,4,5,6,7,8]
+
+        //Crear objetos de manera más práctica
+
+        const crearObjetoPersona = (nombre, edad, idioma) => ({ nombre, edad, idioma });
+
+        console.log(crearObjetoPersona("Camilo", 26, "Español")) // {nombre: "Camilo", edad: "26", idioma: "Español"}
+
+        // Declarar funciones dentro de objetos
+
+        const personaFunc = {
+            nombre: "Isaac",
+            //this. hace referencia al objeto o clase o funcion con la que estamos trabajando Ej: this = persona, persona.nombre = this.nombre, sin embargo si colocas persona.nombre, no va a funcionar, por que es reempolazado por this.
+            presentarse: function (params) {
+                return `¡Hola! Mi nombre es ${this.nombre}`
+            }
+        }
+
+        console.log(personaFunc.presentarse()); // ¡Hola! Mi nombre es Isaac
+
+        //Declarar una clase
+        /*  una clase es una plantilla para crear objetos
+        constructor, propiedades y métodos
+        Una vez definida se pueden crear instancias usando new Ej: 
+        
+        class MiClase {
+            constructor(parametro1, parametro2) {
+                this.propiedad1 = parametro1;
+                this.propiedad2 = parametro2;
+            }
+
+            metodo1() {
+                // Código del método
+            }
+
+            metodo2() {
+                // Código del método
+            }
+        }
+        const instancia = new MiClase(valor1, valor2);
+         */
+
+         class TransbordadorEspacial {
+            constructor(planeta) {
+                this.planeta = planeta
+            }
+         }
+
+         const instanceClassTransbordador = new TransbordadorEspacial("Júpiter");
+
+         console.log(instanceClassTransbordador.planeta)
+
+         //Getter and setters
+         //Por estandar un _ le dice a los desarrolladores que no deberian cambiar un valor
+
+         class Libro {
+            constructor(autor){
+                this._autor = autor
+            }
+
+            get autor() {
+                return this._autor;
+            }
+
+            set autor(nuevoAutor) {
+                console.log("Setter")
+                this._autor = nuevoAutor
+            } 
+         }
+
+         const libro = new Libro("anónimo");
+
+         console.log(libro.autor)
+
+         libro.autor = "Jhon smith"
+         console.log(libro.autor)
+         
+
+    </script>
+</body>
+
+</html>

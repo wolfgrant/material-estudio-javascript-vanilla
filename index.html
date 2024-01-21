@@ -1,0 +1,314 @@
+<script>
+    /*Typs de datos
+        undefined, null, boolean, string, symbol, number y object
+        */
+
+    /*  Declarar una variable es crearla en el código, Ej: let variable;
+        Aisgnar valor a unna variable es dar un valor Ej: variable = 9;
+        Inicializar una variable es crearla y darle un valor Ej: let variable = 9;
+        Variable no inicializada es cuando aún no tiene un valor asignado y solo fué declarado
+    */
+
+    /* La declaración de variables en js normalmente se usa el camelCase: variableUno por estandar
+    sin embargo igualmente se puede usar 
+    Snake Case: variable_uno
+    Pascal Case(o Upper Camel Case): VariableUno
+    Kebab Case (o Lower Camel Case con guiones): variable-uno
+    UPPERCASE: VARIABLE_UNO
+     */
+
+    var x = 'Free Code Camp';
+    console.log(x)
+
+    x = false
+    console.log(x)
+
+    /* Operaciones arigméticas */
+
+    var suma = 7 + 12;
+    console.log(suma)
+    var resta = 15 - 5;
+    console.log(resta);
+    resta = 5 - 15;
+    console.log(resta);
+    var multiplicación = 5 * 3;
+    console.log(multiplicación);
+    var división = 20 / 2;
+    console.log(división);
+    var producto = 15 % 5;
+    console.log(producto)
+    var potencia = 2 ** 4;
+    console.log(potencia)
+
+    var numeroDecimal = 23.4;
+
+    /* Incrementar valor de una variable */
+    /* opción 1 */
+    var librosComprados = 105;
+    console.log(librosComprados);
+    librosComprados = librosComprados + 1;
+
+    /* Opción 2 */
+
+    librosComprados++;
+    console.log(librosComprados)
+
+
+    /* Disminuir el valor de una variable */
+    /* Opción 1 */
+
+    librosComprados = librosComprados - 1;
+    console.log(librosComprados)
+
+    /* Opción 2 */
+
+    librosComprados--;
+    console.log(librosComprados)
+
+
+    /* Asignaciones de operaciones */
+
+    librosComprados += 2
+    console.log(librosComprados)
+
+    librosComprados -= 2;
+    console.log(librosComprados)
+
+    librosComprados *= 2;
+    console.log(librosComprados)
+
+    librosComprados /= 2;
+    console.log(librosComprados)
+
+    /* Cadenas de caracteres */
+
+    var nombre = "Alan";
+
+    var apellido = "Turing"
+
+    var nombreCompleto = "Nombre completo: ";
+
+    nombreCompleto += `${nombre} ${apellido}`
+
+    console.log(nombre + " " + apellido)
+    console.log(`${nombre} ${apellido}`)
+    console.log(nombreCompleto)
+
+    /* Longitud de una cadena */
+
+    console.log(nombreCompleto.length)
+
+    /* Si quiero acceder al índice de un caracter puedo hacerloc omo si fuera un array de string */
+
+    console.log(nombreCompleto[0])
+
+    /* Si quiero que unas comillas entren en un string cuando lo declaré con comillas, hay que poner un backslash antes de la comilla \" */
+
+    var fraseConComillas = "Aprender como se hacer una frase con \"Comillas\""
+    console.log(fraseConComillas)
+    /* O también como lo hemos hechos siempre que es comilla simpla y comilla doble */
+
+    var fraseConComillasSiemples = 'Aprender como se hacer una frase con "Comillas"'
+    console.log(fraseConComillasSiemples)
+
+    /* Secuencias de escape es una combinación de caracteres que no se manifiesta en el terxto
+    
+    -------------------
+
+    Código | Resultado
+
+    -------------------
+
+    \'       Comilla simple
+    \"       Comilla doble
+    \\       Back Slash
+    \n       Salto de linea
+    \r       Retorno de carro
+    \t       Tabulación
+    \b       Retroceso
+    \f       Salto de página
+
+    */
+
+    console.log("demostración de \ntodo")
+
+    /* Inmutabilidad */
+
+    var miCadena = "Jola, Mundo"
+
+    console.log(miCadena)
+
+    /* No se puede cambiar un caracter de una cadena haciendo enfasis en un solo indice del array */
+
+    /* miCadena[0]= "H" Esto da error */
+
+    miCadena = "Hola, Mundo"
+    console.log(miCadena)
+
+    /* Arreglos anidados */
+
+    var listaDeEstudiantes = [["Nora", 97], ["Gino", 78]]
+    console.log(listaDeEstudiantes)
+
+    var listaDePrecios = [["Camisa", 5.97, "S134"], ["Celular", 250, "S356"], ["Zapatos", 36.7, "S678"]]
+    console.log(listaDePrecios)
+    listaDePrecios[0] = ["Shorts", 4.62, "S231"]
+    console.log(listaDePrecios)
+    console.log(listaDePrecios[0])
+    console.log(listaDePrecios[0][1])
+
+    listaDePrecios[0][0] = "Camisa"
+    console.log(listaDePrecios[0][0])
+
+    /* Métodos para arrays */
+
+    /* Agregar un dato al array "Empujar" al final */
+    listaDePrecios[0].push("Nuevo!")
+    console.log(listaDePrecios)
+
+    /* Remover el ultimo elemento de un arreglo */
+    /* .pop puede retornar lo que fué removido, por lo cuals e peude asignar a una variable */
+    var elPop = listaDePrecios[0].pop()
+    console.log(elPop)
+    console.log(listaDePrecios)
+
+    /* Remover el primer elemento */
+    /* Al igual que el .pop, .shift también retorna el elemento eliminado */
+    var elShift = listaDePrecios[0].shift()
+    console.log(elShift)
+    console.log(listaDePrecios)
+
+    /* Agregar un dato al inicio del arreglo */
+    listaDePrecios[0].unshift("Camisa")
+    console.log(listaDePrecios)
+
+    /*Cambia el contenido de un array eliminando elementos existentes y/o agregando nuevos elementos.  */
+    const miArray = [1, 2, 3, 4, 5];
+    miArray.splice(2, 2, 'a', 'b');
+    console.log(miArray); // [1, 2, 'a', 'b', 5]
+
+    /* Retorna una porción (slice) del array, sin modificar el array original. */
+    const array2 = [1, 2, 3, 4, 5];
+    const subArray = array2.slice(1, 4);
+    console.log(subArray); // [2, 3, 4]
+
+    /* Ejecuta una función para cada elemento del array. */
+    miArray.forEach(function (elemento) {
+        console.log(elemento);
+    });
+    // Resultado:
+    // 1
+    // 2
+    // 3
+
+    /* Combina dos o más arrays. */
+
+    const array1 = [1, 2, 3];
+    const array3 = [4, 5, 6];
+    const resultado = array1.concat(array3);
+    console.log(resultado); // [1, 2, 3, 4, 5, 6]
+
+    /* Convierte los elementos de un array en una cadena, separados por un delimitador. */
+
+    const miArrayJoin = ['Hola', 'Mundo', 'JavaScript'];
+    const cadena = miArrayJoin.join(' ');
+    console.log(cadena); //  'Hola Mundo JavaScript'
+
+    /* indexOf busca la primera ocurrencia de un elemento y devuelve su índice. lastIndexOf busca la última ocurrencia. */
+
+    const miArrayIndexOfLasIndexOf = [1, 2, 3, 4, 2];
+    console.log(miArrayIndexOfLasIndexOf.indexOf(2)); // 1
+    console.log(miArrayIndexOfLasIndexOf.lastIndexOf(2)); // 4
+
+    /*  Invierte el orden de los elementos en un array. */
+
+    const miArrayRevert = [1, 2, 3, 4, 5];
+    const arrayInvertido = miArrayRevert.reverse();
+    console.log(arrayInvertido); // [5, 4, 3, 2, 1]
+
+    /*  Crea un nuevo array con todos los elementos que pasan una condición implementada por la función proporcionada. */
+    const miArrayFilter = [1, 2, 3, 4, 5];
+    const newArray = miArrayFilter.filter(function (elemento) {
+        return elemento > 2;
+    });
+    console.log(newArray); // [3, 4, 5]
+
+    const personas = [
+        { nombre: 'Juan', edad: 25 },
+        { nombre: 'Ana', edad: 17 },
+        { nombre: 'Pedro', edad: 30 },
+        { nombre: 'María', edad: 16 },
+        { nombre: 'Elena', edad: 22 }
+    ];
+
+    // Usando filter para obtener personas mayores de 18 años
+    const mayoresDe18 = personas.filter(function (persona) {
+        return persona.edad > 18;
+    });
+
+    console.log(mayoresDe18);
+    /* [
+    { nombre: 'Juan', edad: 25 },
+    { nombre: 'Pedro', edad: 30 },
+    { nombre: 'Elena', edad: 22 }
+    ] */
+
+    /* Crea un nuevo array con los resultados de llamar a una función para cada elemento del array. */
+
+    const miArrayMap = [1, 2, 3];
+    const newArrayMap = miArrayMap.map(function (elemento) {
+        return elemento * 2;
+    });
+    console.log(newArrayMap); // [2, 4, 6]
+
+    /* Aplica una función acumuladora sobre cada elemento de un array, de izquierda a derecha, para reducirlo a un único valor.*/
+
+    const miArrayReduce = [1, 2, 3, 4, 5];
+    const sumaReduce = miArrayReduce.reduce(function (acumulador, elemento) {
+        console.log(acumulador, elemento) //0, 1   1, 2   3, 3    6, 4   10, 5    15
+        return acumulador + elemento;
+    }, 0);
+    console.log(sumaReduce); // 15
+
+    /* Cuando declaras con var, puedes declarar e inicializar una variable con el mismo nombre dos veces y se cogera la ultima que se delcaró
+     Izado (hoisting): Las declaraciones de variables var son izadas (hoisted) al inicio de su contexto de ejecución, lo que significa que puedes usar la variable antes de declararla en el código.
+     */
+    function ejemploVar() {
+        if (true) {
+            var x = 10;
+            var x = 50;
+        }
+        console.log(x); // 50 (aunque x fue declarado dentro del bloque if y aunqe fue declarado e inicializado dos veces, por jerarquia coge el último valor)
+    }
+    /* se puede usar en el ambito global */
+    for(var indexVar = 0; indexVar < 3; indexVar++){
+        console.log(indexVar)
+    }
+    console.log(indexVar)
+
+    /* Cuando declaras con let, puedes declarar e inicializar unicamente una variable con un nombre, pues sio se trata de usar otro let con el nombre de la misma variable va a salir error
+     No es izado: A diferencia de var, las declaraciones de let no son izadas, y si intentas acceder a la variable antes de declararla, obtendrás un error de referencia.*/
+
+    function ejemploLet() {
+        if (true) {
+            let y = 20;
+            //let y = 10 //Error, no se puede inicializar otra variable con el mismo nombre
+        }
+        // console.log(y); // Error: y no está definido fuera del bloque if
+    }
+
+    for(let indexLet = 0; indexLet < 3; indexLet++){
+        console.log(indexLet)
+    }
+
+    // console.log(indexLet) //Error, solo termina siendo algo del ambito local
+
+    /* La principal diferencia con let es que una vez que asignas un valor a una variable const, no puedes reasignarle otro valor. */
+    function ejemploConst() {
+        const z = 30;
+        //const z = 30 /Error, no se puede inicializar otra variable con el mismo nombre
+        // z = 40; // Error: no puedes reasignar una variable constante
+        console.log(z) // 30
+    }
+
+</script>

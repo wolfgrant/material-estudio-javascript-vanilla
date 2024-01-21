@@ -1,0 +1,37 @@
+En JavaScript, las funciones regulares y las funciones flecha son dos formas diferentes de definir funciones, y tienen algunas diferencias clave en términos de sintaxis y comportamiento. Aquí hay algunas de las principales diferencias:
+
+1. **Sintaxis:**
+   - **Funciones regulares:**
+     ```javascript
+     function nombreFuncion(parametro1, parametro2) {
+       // Cuerpo de la función
+     }
+     ```
+   - **Funciones flecha:**
+     ```javascript
+     const nombreFuncion = (parametro1, parametro2) => {
+       // Cuerpo de la función
+     };
+     ```
+
+2. **`this` en funciones flecha:**
+   - En las funciones regulares, el valor de `this` está determinado por cómo se invoca la función.
+   - En las funciones flecha, el valor de `this` está tomado del contexto léxico en el que se define la función flecha. Esto significa que las funciones flecha no tienen su propio `this` y heredan el `this` del ámbito que las rodea.
+
+3. **`arguments` en funciones flecha:**
+   - Las funciones regulares tienen el objeto `arguments` que representa los argumentos pasados a la función.
+   - Las funciones flecha no tienen su propio objeto `arguments`, por lo que si necesitas acceder a los argumentos, debes usar el objeto `arguments` del ámbito que las contiene.
+
+4. **Constructor:**
+   - Las funciones regulares pueden ser utilizadas como constructores para crear nuevos objetos utilizando el operador `new`.
+   - Las funciones flecha no pueden ser utilizadas como constructores y no tienen su propio `this`, por lo que no pueden ser instanciadas con `new`.
+
+5. **Palabra clave `super`:**
+   - En las clases, las funciones regulares tienen acceso a la palabra clave `super` para llamar a métodos del objeto padre.
+   - Las funciones flecha no tienen su propio `super` y heredan el `super` del ámbito que las contiene.
+
+6. **Uso de `return`:**
+   - En funciones regulares, si la función tiene un solo statement de retorno, el valor se devuelve automáticamente.
+   - En funciones flecha, si la función tiene un solo statement de retorno, también se devuelve automáticamente.
+
+En resumen, las funciones flecha son una forma más concisa de escribir funciones en JavaScript y tienen un comportamiento específico en términos de `this` y otras características. Sin embargo, no son apropiadas en todas las situaciones, y las funciones regulares siguen siendo útiles en ciertos casos, especialmente cuando se necesita un control más preciso sobre el contexto `this`.

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8" />
+
+<script>
+    var miListaDeCompras = [["cereal", 3], ["leche", 2], ["galletas", 4], ["pan", 5], ["refresco", 7], ["pollo", 7]]
+
+    console.log(`Voy a comprar ${miListaDeCompras[0][1]} unidades de ${miListaDeCompras[0][0]}.`)
+    console.log(`Voy a comprar ${miListaDeCompras[1][1]} unidades de ${miListaDeCompras[1][0]}.`)
+    console.log(`Voy a comprar ${miListaDeCompras[2][1]} unidades de ${miListaDeCompras[2][0]}.`)
+    console.log(`Voy a comprar ${miListaDeCompras[3][1]} unidades de ${miListaDeCompras[3][0]}.`)
+    console.log(`Voy a comprar ${miListaDeCompras[4][1]} unidades de ${miListaDeCompras[4][0]}.`)
+    console.log(`Voy a comprar ${miListaDeCompras[5][1]} unidades de ${miListaDeCompras[5][0]}.`)
+
+    /* lo que se envía en el método se puede llamar Argumento o parametro */
+    function mostrarMensaje(a, b) {
+        var suma = a + b
+        
+        //console.log(`El resultado de ${a} + ${b} es: ${suma}` )
+
+        return (suma);
+    }
+
+    
+
+    var x = 5;
+    var y = 7;
+
+    var variableAMostrar = mostrarMensaje(x, y);
+
+    console.log(variableAMostrar)
+
+    /* Si tengo dos variables una local y otra global con el mismo nombre, la local hace prioridad sobre la global en la función */
+    
+    function pruebaVariable () {
+        var x = 10;
+        console.log(x) // 10
+    } 
+
+    pruebaVariable();
+
+    function proximoEnLaFila (array, number) {
+        array.push(number)
+        return array.shift()
+    }
+
+    var arrayFunction = [1, 2, 3, 4]
+    var elementoRemovido = proximoEnLaFila(arrayFunction, 5)
+    console.log(`Se eliminó el elemento: ${elementoRemovido} del array y quedó así: ${JSON.stringify(arrayFunction)}`)
+
+    /* Booleans y comparaciones */
+
+    /* Igualdades */
+    console.log(9 == 9) //true
+    console.log(9 == "9") //true
+    
+    // el == no compara el tipo, el === si compara que sean el mismo tipo
+    console.log(9 === "9") //false
+
+    /* desigualdades */
+    console.log(9 != 5) // true
+    console.log(9 != 9) // false
+
+    // el != no compara el tipo, el !== si compara que sean el mismo tipo
+
+    console.log(9 != '9') // false
+    console.log(9 !== '9') // true
+
+    /* Operadores mayor, menor e igual que */
+
+    console.log(6 > 5) // true
+    console.log(6 < 5) // false
+
+    console.log("B" > "A") // true revisa la gerarquia de cadennas ABCD en orden alfabetico, diciendo que B es mayor que A
+    console.log("ACB" > "ABC") // true
+
+    console.log("AB" > "A") // true por que aparte también tiene más carácteres
+
+    console.log("M" > "H") // true
+
+    console.log(5 >= 5) // true
+
+    console.log(5 <= 5) // true
+
+    console.log(5 <= 3) //false
+
+    /* Operadores lógicos */
+
+    var u = 2;
+    var i = 3;
+    var r= 1;
+    var t = 5;
+
+    console.log(u <= i && r <= t) // true
+    console.log(u > i && r <= t) // false
+
+    console.log(u > i || r <= t) // true
+    console.log(u < i || r > t) // true
+    console.log(u >= i || r >= t) // false
+
+    var first = true
+
+    console.log(first) // true
+    console.log(!first) // false
+
+    console.log(!(u <= i && r <= t)) // false
+    console.log(!(u > i && r <= t)) // true
+
+    if(!(u <= i && r <= t)) {
+        console.log("La condición es verdadera")
+    } else if (u >= i || r >= t) {
+        console.log("La condición del else if es verdadera")
+    } else if (!(u > i && r <= t)) {
+        console.log("La condición del else if 2 es verdadera")
+    } else {
+        console.log("La condición es falsa")
+    }
+
+</script>
+
+
+</html>

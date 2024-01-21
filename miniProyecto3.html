@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8" />
+
+<script>
+
+    var conteo = 0;
+
+    function contarCartas(carta) {
+        var decision;
+
+        switch (carta) {
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+                conteo++;
+                break;
+            case 10:
+            case 'J':
+            case 'Q':
+            case 'K':
+            case 'A':
+                conteo--;
+            default:
+                break;
+        }
+
+        if (conteo > 0) {
+            decision = "Apostar"
+        } else {
+            decision = "esperar"
+        }
+
+        return `${conteo} ${decision}`
+    }
+
+    console.log(contarCartas(2))
+    console.log(contarCartas(3))
+    console.log(contarCartas(7))
+    console.log(contarCartas('K'))
+    console.log(contarCartas('A'))
+
+    /* Objetos */
+
+    var miPerro = {
+        "nombre": "Sköll",
+        "edad": 2,
+        "peso": 20,
+        "raza": "husky",
+    }
+
+    console.log(miPerro.nombre)
+
+    var miCuaderno = {
+        color: "verde",
+        categoria: 3,
+        "numero de paginas": 200,
+        "numero de hojas": 100,
+    }
+
+    console.log(miCuaderno.categoria, miCuaderno.color, miCuaderno['numero de paginas'], miCuaderno["numero de hojas"])
+    console.log(miCuaderno.color)
+
+    var resultados = {
+        1: "nora256",
+        2: "ginos577",
+        3: "stef543",
+    }
+
+    var posicion = 3
+
+    console.log(resultados[posicion], resultados[2])
+
+    var miLibro = {
+        color: "verde",
+        categoria: [3, 2],
+        "numero de paginas": 200,
+        "numero de hojas": [120, 100],
+    }
+
+    miLibro.color = "azul"
+    miLibro.categoria.shift()
+    miLibro.categoria.push(6)
+    miLibro['numero de hojas'].push(200)
+    miLibro['numero de hojas'][0] = 150
+
+    /* Agregar propiedad a un objeto */
+    miLibro.genero = "Terror"
+
+    /* Eliminar propiedad del objeto */
+
+    delete miLibro['numero de paginas']
+
+
+    console.log(miLibro)
+
+    function buscarElementoQuimico(simbolo) {
+
+        var simbolosQuimicos = {
+            Al: "Aluminio",
+            S: "Azufre",
+            Cl: "Cloro",
+            He: "Helio",
+            B: "Boro",
+            Li: "Litio"
+        }
+
+        return simbolosQuimicos[simbolo]
+    }
+
+    console.log(buscarElementoQuimico("Al"));
+    console.log(buscarElementoQuimico("S"));
+    console.log(buscarElementoQuimico("Cl"));
+    console.log(buscarElementoQuimico("He"));
+    console.log(buscarElementoQuimico("B"));
+    console.log(buscarElementoQuimico("Li"));
+
+    /* Ver si un objeto tiene una propiedad específica */
+
+    console.log(miCuaderno.hasOwnProperty("color")) // true
+    console.log(miCuaderno.hasOwnProperty("origen")) // false
+
+    function verificarPropiedad(obj, propiedad) {
+        if (obj.hasOwnProperty(propiedad)) {
+            return `Propiedad: ${obj[propiedad]}`
+        } else {
+            return "El objeto no tiene esta propiedad"
+        }
+    }
+
+    console.log(verificarPropiedad(miCuaderno, "color"))
+    console.log(verificarPropiedad(miCuaderno, "origen"))
+
+    var ordenesDePizzas = [
+        {
+            "tipo": "margarita",
+            "tamaño": "individual",
+            "precio": 5.67,
+            "toppings": [
+                "extra queso",
+                "champiñones",
+                "piña"
+            ],
+            "paraLlevar": true
+        },
+        {
+            "tipo": "cuatro quesos",
+            "tamaño": "familiar",
+            "precio": 18.34,
+            "toppings": [
+                "extra queso",
+                "pimentón"
+            ],
+            "paraLlevar": false
+        },
+    ];
+
+    console.log(ordenesDePizzas[0].tipo);
+    console.log(ordenesDePizzas[0]["tipo"]);
+
+    var miReceta = {
+        "descripcion": "mi postre favorito",
+        "costo": 15.6,
+        "ingredientes": {
+            "masa": {
+                "harina": "100 grs",
+                "sal": "1 cucharadita",
+                "agua": "1 taza"
+            },
+            "cobertura": {
+                "azucar": "120 grs",
+                "chocolate": "4 cucharadas",
+                "mantequilla": "200 grs"
+            }
+        }
+    };
+
+    console.log(miReceta.ingredientes.masa)
+    console.log(miReceta.ingredientes.masa["harina"])
+
+    var misPlantas = [
+        {
+            tipo: "flores",
+            lista: [
+                "rosas",
+                "tulipanes",
+                "dientes de león"
+            ]
+        },
+        {
+            tipo: "árboles",
+            lista: [
+                "abeto",
+                "pino",
+                "abedul"
+            ]
+        }
+    ];
+
+    console.log(misPlantas[0]["lista"][1])
+
+</script>
+
+
+</html>

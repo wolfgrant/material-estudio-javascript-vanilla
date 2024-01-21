@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var coleccionDeDiscos = {
+            7853: {
+                tituloDeAlbum: "Bee Gees Greatest",
+                artista: "Bee Gees",
+                canciones: [
+                    "Stayin' Alive"
+                ]
+            },
+            5439: {
+                tituloDeAlbum: "ABBA gold"
+            }
+        }
+
+        function actualziarDiscord(discos, id, propiedad, valor) {
+            if (valor === "") {
+                delete discos[id][propiedad];
+            } else if (propiedad === "canciones") {
+                discos[id][propiedad] = discos[id][propiedad] || []
+                discos[id][propiedad].push(valor)
+            } else if (valor !== "" && propiedad !== "canciones") {
+                discos[id][propiedad] = valor
+            }
+        }
+
+        console.log(coleccionDeDiscos[5439].canciones)
+        actualziarDiscord(coleccionDeDiscos, 5439, "canciones", "Mamma Mia")
+        console.log(coleccionDeDiscos[5439].canciones)
+
+        /* Ciclos */
+
+        var count = 0
+
+        while (count <= 5) {
+            console.log(`Count: ${count}`);
+            count++;
+        }
+
+        var arreglo = []
+        var i = 0;
+
+        console.log(arreglo);
+
+        while (i < 10) {
+            arreglo.push(i + 1);
+            i++;
+        }
+
+        console.log(arreglo);
+
+        while (arreglo.length > 4) {
+            arreglo.pop()
+        }
+
+        console.log(arreglo)
+
+        //for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 10; i += 2) {
+            arreglo.push(i)
+        }
+
+        console.log(arreglo)
+
+        /* Números impares */
+
+        var arregloImpar = []
+        var arregloPar = []
+        for (let i = 0; i < 20; i++) {
+            if (i % 2 !== 0) {
+                arregloImpar.push(i)
+            }
+            if (i % 2 === 0) {
+                arregloPar.push(i)
+            }
+        }
+
+        console.log(arregloImpar, arregloPar)
+
+        for (let i = 15; i >= 10; i--) {
+            console.log(i)
+        }
+
+        var otroArregloMas = [4, 6, 8, 2]
+        var total = 0;
+
+
+        for (const element of otroArregloMas) {
+            total += element;
+        }
+
+        /* 
+        Se puede hacer de dos formas pero for-of es mejor que esta
+        for(let i = 0; i < otroArregloMas.length; i++){
+            total += otroArregloMas[i];
+        } */
+
+        console.log(total)
+
+        var lenguajes = ["JavaScript", "Python", "Java", "C++"]
+
+        for (const element of lenguajes) {
+            console.log(element.toUpperCase());
+        }
+
+        function contarNumerosPares(arreglo) {
+            var total = 0;
+
+            for (const element of arreglo) {
+                if (element % 2 == 0) {
+                    total++
+                }
+            }
+            return total;
+        }
+
+        console.log(contarNumerosPares([5, 2, 6, 3, 7, 5, 6, 3]))
+
+        var arrayAnidado = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+        /* Así puedo sacar el index de un for-of */
+
+        for (const [index1, primerArray] of arrayAnidado.entries()) {
+            for (const [index2, segundoArray] of primerArray.entries()) {
+                if (index1 !== 0 && index2 !== 1) {
+                    console.log(segundoArray)
+                }
+            }
+        }
+    
+        var variableX = 16
+
+        /* En este ciclo, a diferencia del while, va a ejecutar lo que hay dentro del do y luego evalua si el la condición del while es verdadera o falta
+        Este caso es diferente por que en el while primero evalua si la condición es verdadera o falsa y luego ejecuta o no ejecuta el código */
+
+        do {
+            console.log(variableX);
+            variableX++;
+        } while (variableX < 10);
+
+        while (variableX < 10) {
+            console.log(variableX);
+            variableX++;
+        };
+
+    </script>
+</body>
+
+</html>

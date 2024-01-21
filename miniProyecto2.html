@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8" />
+
+<script>
+
+    function calcular(par, golpes) {
+        if (golpes == 1) {
+            return "Hole-in-one"
+        } else if (golpes <= par - 2) {
+            return "Eagle";
+        } else if (golpes == par - 1) {
+            return "Birdie";
+        } else if (golpes == par) {
+            return "Par"
+        } else if (golpes == par + 1) {
+            return "Bogey"
+        } else if (golpes == par + 2) {
+            return "Double Bogey"
+        } else if (golpes >= par + 3) {
+            return "Go Home"
+        }
+    }
+    var parGl = 4;
+    var golpesGl = 7;
+
+    var retorno = calcular(parGl, golpesGl);
+
+    console.log(retorno)
+
+    /* Switch */
+
+    function clasificarValor(valor) {
+        var respuesta;
+        switch (valor) {
+            case 1:
+                respuesta = "alpha"
+                break;
+            case 2:
+                respuesta = "beta"
+                break;
+            case 3:
+                respuesta = "gamma"
+                break;
+
+            default:
+                respuesta = "delta"
+                break;
+        }
+
+        return respuesta
+    }
+
+    var nuevaSw = clasificarValor(4)
+    console.log(nuevaSw)
+
+    function clasificarVolumen(valor) {
+        var volumen;
+        switch (valor) {
+            case 1:
+                volumen = "Bajo"
+                break;
+            case 2:
+            case 3:
+                volumen = "Medio"
+                break;
+            case 4:
+            case 5:
+            case 6:
+                volumen = "Alto"
+                break;
+
+            default:
+
+                volumen = "Muy alto"
+                break;
+        }
+
+        return volumen
+    }
+
+    console.log(clasificarVolumen(12))
+
+    function clasificarVolumen2(valor) {
+        var volumen;
+        switch (true) {
+            case valor == 1:
+                volumen = "Bajo"
+                break;
+            case valor == 2:
+            case valor == 3:
+                volumen = "Medio"
+                break;
+            case valor == 4:
+            case valor == 5:
+            case valor == 6:
+                volumen = "Alto"
+                break;
+
+            default:
+
+                volumen = "Muy alto"
+                break;
+        }
+
+        return volumen
+    }
+
+    console.log(clasificarVolumen2(2))
+
+</script>
+
+
+</html>
