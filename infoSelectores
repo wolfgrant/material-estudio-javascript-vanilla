@@ -1,0 +1,73 @@
+En el contexto de la programación y desarrollo web, un "selector" se refiere a una expresión utilizada para seleccionar un conjunto específico de elementos HTML en una página. Los selectores son una parte fundamental de las hojas de estilo (CSS) y también se utilizan en algunas bibliotecas y frameworks de JavaScript, como jQuery.
+
+En CSS, los selectores se utilizan para aplicar estilos a elementos específicos en una página web. Aquí hay algunos ejemplos de selectores comunes en CSS:
+
+1. **Selector de Tipo:**
+   ```css
+   p {
+     /* Estilos aplicados a todos los elementos <p> en la página */
+   }
+   ```
+
+2. **Selector de Clase:**
+   ```css
+   .mi-clase {
+     /* Estilos aplicados a todos los elementos con la clase "mi-clase" */
+   }
+   ```
+
+3. **Selector de ID:**
+   ```css
+   #mi-id {
+     /* Estilos aplicados al elemento con el ID "mi-id" */
+   }
+   ```
+
+4. **Selector de Atributo:**
+   ```css
+   input[type="text"] {
+     /* Estilos aplicados a todos los elementos <input> de tipo texto */
+   }
+   ```
+
+5. **Selector de Descendencia:**
+   ```css
+   div p {
+     /* Estilos aplicados a todos los elementos <p> que son descendientes de un elemento <div> */
+   }
+   ```
+
+6. **Selector de Clase Anidado:**
+   ```css
+   .contenedor .mi-clase {
+     /* Estilos aplicados a todos los elementos con la clase "mi-clase" que están dentro de un elemento con la clase "contenedor" */
+   }
+   ```
+
+Estos son solo algunos ejemplos básicos de selectores CSS. Los selectores permiten apuntar a elementos específicos en una página y aplicar estilos o manipular su contenido utilizando CSS o JavaScript. Además de CSS, los selectores también se utilizan en bibliotecas como jQuery para seleccionar y manipular elementos del DOM de manera más dinámica.
+
+jerarquia
+
+Selector de ID (#mi-id):
+
+Tiene la mayor especificidad.
+Anula a los selectores de clase y de tipo.
+Selector de Clase (.mi-clase):
+
+Tiene una especificidad mayor que la del selector de tipo.
+Anula a los selectores de tipo.
+Selector de Tipo (p, div, etc.):
+
+Tiene la menor especificidad.
+Puede ser anulado por selectores de clase o de ID.
+Selector de Atributo ([type="text"]):
+
+Similar a la especificidad del selector de clase.
+Selector de Descendencia (div p):
+
+La especificidad depende del número de elementos y el tipo de selectores utilizados en la cadena de descendencia.
+La regla "el último selector tiene más peso" se aplica en una cadena de selectores de descendencia.
+Selector de Clase Anidado (.contenedor .mi-clase):
+
+La especificidad depende del número y tipo de selectores utilizados.
+Anula a los selectores de tipo en un nivel más alto de la jerarquía.
