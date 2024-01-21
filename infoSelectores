@@ -46,7 +46,7 @@ En CSS, los selectores se utilizan para aplicar estilos a elementos específicos
 
 Estos son solo algunos ejemplos básicos de selectores CSS. Los selectores permiten apuntar a elementos específicos en una página y aplicar estilos o manipular su contenido utilizando CSS o JavaScript. Además de CSS, los selectores también se utilizan en bibliotecas como jQuery para seleccionar y manipular elementos del DOM de manera más dinámica.
 
-jerarquia
+Especificidad
 
 Selector de ID (#mi-id):
 

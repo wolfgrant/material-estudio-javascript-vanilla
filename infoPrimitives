@@ -1,0 +1,67 @@
+En el contexto de la programación y la informática, el término "primitives" (primitivas) se utiliza para referirse a tipos de datos básicos y simples que forman la base de un lenguaje de programación. Las primitivas son los bloques de construcción fundamentales que se utilizan para representar y manipular datos en un programa. Cada lenguaje de programación tiene su propio conjunto de primitivas, pero algunas son comunes en muchos de ellos. Aquí hay algunas primitivas comunes:
+
+1. **Números Enteros (Integer):**
+   - Representan números enteros sin decimales.
+   - Ejemplos: 1, -5, 100.
+
+2. **Números de Punto Flotante (Floating-Point):**
+   - Representan números con decimales.
+   - Ejemplos: 3.14, -0.5, 2.0.
+
+3. **Caracteres (Character):**
+   - Representan un solo carácter o símbolo.
+   - Ejemplos: 'a', '1', '!'.
+
+4. **Cadenas de Texto (String):**
+   - Representan secuencias de caracteres.
+   - Ejemplos: "Hola, mundo!", 'Programación'.
+
+5. **Booleanos (Boolean):**
+   - Representan valores de verdad (`true` o `false`).
+   - Se utilizan en expresiones lógicas y de control de flujo.
+
+6. **Null y Undefined:**
+   - `null` se utiliza para representar la ausencia intencionada de un valor.
+   - `undefined` indica que una variable ha sido declarada pero aún no ha sido inicializada.
+
+Estas primitivas forman la base para la construcción de estructuras de datos más complejas y son esenciales para la manipulación de datos en la programación. Los tipos primitivos son a menudo inmutables, lo que significa que no se pueden cambiar directamente, y cualquier operación que parezca modificarlos en realidad crea un nuevo valor.
+
+En algunos lenguajes de programación, como JavaScript, también se incluyen primitivas adicionales, como `BigInt` para representar números enteros grandes y `Symbol` para identificadores únicos. La comprensión de las primitivas es fundamental para escribir código efectivo y entender cómo los datos se almacenan y manipulan en un programa.
+
+En JavaScript, el tipo de dato `Symbol` se utiliza para crear identificadores únicos e inmutables. Cada valor de `Symbol` es único, incluso si se crean múltiples símbolos con la misma descripción. Aquí tienes un ejemplo simple:
+
+```javascript
+// Crear un símbolo con una descripción
+const simbolo1 = Symbol('miSimbolo');
+const simbolo2 = Symbol('miSimbolo');
+
+// Comprobar si los símbolos son iguales
+console.log(simbolo1 === simbolo2); // false
+
+// Imprimir la descripción de un símbolo
+console.log(simbolo1.description); // 'miSimbolo'
+console.log(simbolo2.description); // 'miSimbolo'
+
+// Utilizar símbolos como propiedades de objetos
+const objeto = {
+  [simbolo1]: 'Valor del símbolo 1',
+  [simbolo2]: 'Valor del símbolo 2'
+};
+
+console.log(objeto[simbolo1]); // 'Valor del símbolo 1'
+console.log(objeto[simbolo2]); // 'Valor del símbolo 2'
+
+// Obtener todas las propiedades de un objeto, incluyendo símbolos
+const propiedades = Object.getOwnPropertySymbols(objeto);
+console.log(propiedades); // [Symbol(miSimbolo), Symbol(miSimbolo)]
+```
+
+En este ejemplo:
+
+- Se crean dos símbolos (`simbolo1` y `simbolo2`) con la misma descripción, pero son valores distintos.
+- La comparación `simbolo1 === simbolo2` devuelve `false` porque son objetos únicos.
+- La propiedad `description` se utiliza para obtener la descripción de un símbolo.
+- Los símbolos se utilizan como claves para propiedades de un objeto.
+- `Object.getOwnPropertySymbols(objeto)` devuelve un array con todos los símbolos utilizados como propiedades en el objeto.
+
+Los símbolos son útiles cuando necesitas crear propiedades únicas en objetos y evita colisiones con otras propiedades. También se utilizan en situaciones donde la identidad única es esencial, como en la implementación de ciertos métodos y comportamientos en bibliotecas y frameworks.

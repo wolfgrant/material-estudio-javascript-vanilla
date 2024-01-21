@@ -1,0 +1,47 @@
+Los patrones de diseño son enfoques probados y recomendados para resolver problemas comunes de diseño de software. A continuación, se describen algunos patrones de diseño que son comunes en React y Angular:
+
+### React:
+
+1. **Componentes Presentacionales y Contenedores:**
+   - **Descripción:** Separación de componentes en dos tipos. Los componentes presentacionales (o tontos) se centran en la presentación y no manejan lógica de estado, mientras que los contenedores (o inteligentes) se encargan de la lógica de estado y la interacción con los datos.
+   - **Ventajas:** Mayor reutilización, mantenimiento y prueba más sencilla.
+
+2. **Render Props:**
+   - **Descripción:** Un patrón donde un componente acepta una función como prop que devuelve un elemento React. Esta función se utiliza para compartir código y lógica entre componentes.
+   - **Ventajas:** Mayor reutilización de lógica entre componentes.
+
+3. **HOC (Higher-Order Component):**
+   - **Descripción:** Una función que toma un componente y devuelve un nuevo componente con funcionalidades adicionales.
+   - **Ventajas:** Reutilización de lógica, composición de componentes.
+
+4. **Context API:**
+   - **Descripción:** Un patrón que permite pasar datos a través del árbol de componentes sin tener que pasar props manualmente en cada nivel.
+   - **Ventajas:** Evita la prop drilling y facilita el acceso global a datos compartidos.
+
+5. **Controlled vs. Uncontrolled Components:**
+   - **Descripción:** En un componente controlado, el estado es manejado por React, mientras que en un componente no controlado, el estado es manejado por el DOM.
+   - **Ventajas:** Mayor control sobre los datos y el flujo de datos en la aplicación.
+
+### Angular:
+
+1. **Inyección de Dependencias (Dependency Injection):**
+   - **Descripción:** Un patrón en el que las dependencias de un componente son proporcionadas desde el exterior, lo que facilita la prueba unitaria y la reutilización de componentes.
+   - **Ventajas:** Mejora la modularidad y la mantenibilidad.
+
+2. **Directivas:**
+   - **Descripción:** Permiten la creación de comportamientos personalizados en los elementos del DOM. Angular proporciona directivas integradas y permite crear directivas personalizadas.
+   - **Ventajas:** Reutilización de comportamientos en la interfaz de usuario.
+
+3. **Servicios:**
+   - **Descripción:** Singleton compartido a través de la aplicación que encapsula lógica de negocio, estado y otras funciones que deben compartirse entre componentes.
+   - **Ventajas:** Centralización de la lógica de negocio y compartición de datos.
+
+4. **Observable Pattern (RxJS):**
+   - **Descripción:** Uso de Observables para manejar flujos de datos asíncronos. Angular utiliza RxJS para implementar el patrón Observable.
+   - **Ventajas:** Facilita la gestión de eventos asíncronos y la manipulación de flujos de datos.
+
+5. **Formularios Reactivos:**
+   - **Descripción:** Uso de formularios reactivos para manejar la entrada del usuario de una manera más declarativa y controlada.
+   - **Ventajas:** Mayor control sobre el estado del formulario y facilidad en la manipulación de datos del formulario.
+
+Estos son solo algunos de los patrones de diseño utilizados en React y Angular. Ambos marcos ofrecen diferentes enfoques y herramientas para abordar desafíos comunes en el desarrollo de aplicaciones web. La elección de un patrón específico dependerá de los requisitos del proyecto y las preferencias del equipo de desarrollo.

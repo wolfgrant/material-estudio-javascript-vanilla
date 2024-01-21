@@ -1,0 +1,83 @@
+En JavaScript, las promesas son un mecanismo para trabajar con operaciones asíncronas. Proporcionan una manera más estructurada y legible de manejar el flujo asíncrono en comparación con los callbacks anidados. Una promesa representa un valor que puede estar disponible ahora, en el futuro o nunca.
+
+Una promesa tiene tres estados:
+
+1. **Pending (Pendiente):** El estado inicial, la promesa está en proceso y aún no se ha resuelto ni rechazado.
+
+2. **Fulfilled (Cumplida):** La operación asíncrona se completó con éxito y la promesa devuelve un valor.
+
+3. **Rejected (Rechazada):** La operación asíncrona falló y la promesa devuelve un motivo de rechazo (un error).
+
+### Creación de una Promesa:
+
+Puedes crear una promesa utilizando el constructor `Promise`. Este constructor toma una función que recibe dos argumentos: `resolve` y `reject`. Dentro de esta función, realizas tu tarea asíncrona y, cuando se completa, llamas a `resolve` con el resultado o a `reject` si hay un error.
+
+```javascript
+const miPromesa = new Promise((resolve, reject) => {
+  // Tarea asíncrona, por ejemplo, una llamada a una API
+  setTimeout(() => {
+    const exito = true;
+
+    if (exito) {
+      resolve("¡Operación exitosa!");
+    } else {
+      reject(new Error("La operación ha fallado."));
+    }
+  }, 1000);
+});
+```
+
+### Consumir una Promesa:
+
+Para consumir el resultado de una promesa, utilizas los métodos `then` y `catch`. El método `then` se ejecuta cuando la promesa se resuelve, y `catch` se ejecuta cuando la promesa es rechazada.
+
+```javascript
+miPromesa
+  .then((resultado) => {
+    console.log(resultado); // ¡Operación exitosa!
+  })
+  .catch((error) => {
+    console.error(error.message); // La operación ha fallado.
+  });
+```
+
+### Encadenamiento de Promesas:
+
+Puedes encadenar varias promesas para realizar operaciones asíncronas en secuencia utilizando varios bloques `then`. Esto facilita la gestión de flujos asíncronos más complejos.
+
+```javascript
+const otraPromesa = new Promise((resolve) => {
+  resolve("Segunda operación exitosa");
+});
+
+miPromesa
+  .then((resultado) => {
+    console.log(resultado); // ¡Operación exitosa!
+    return otraPromesa;
+  })
+  .then((resultado) => {
+    console.log(resultado); // Segunda operación exitosa
+  })
+  .catch((error) => {
+    console.error(error.message);
+  });
+```
+
+Las promesas proporcionan una forma más legible y eficiente de trabajar con operaciones asíncronas en comparación con los callbacks anidados. Además, son la base de conceptos más avanzados, como el uso de `async/await`.
+
+Una promesa con estado `pending` es una promesa que aún no se ha resuelto ni rechazado. Este es el estado inicial de una promesa antes de que la operación asíncrona asociada se complete. A continuación, te muestro un ejemplo simple de cómo se ve una promesa con estado `pending`:
+
+```javascript
+const miPromesa = new Promise((resolve, reject) => {
+  // Tarea asíncrona pendiente
+  // En este ejemplo, simulamos una tarea asíncrona con un temporizador
+  setTimeout(() => {
+    // Supongamos que aún no hemos determinado si la operación fue exitosa o falló
+    // Por lo tanto, la promesa permanece en estado 'pending'
+  }, 1000);
+});
+
+console.log(miPromesa); // Output: Promise { <pending> }
+```
+
+En este ejemplo, `miPromesa` está en estado `pending` porque la tarea asíncrona en su interior (simulada con un temporizador) aún no se ha completado. Una vez que la tarea asíncrona se complete, la promesa pasará a un estado de `fulfilled` (cumplida) si la operación fue exitosa, o a un estado de `rejected` (rechazada) si ocurrió un error. Durante el tiempo que la promesa está pendiente, puedes encadenar `then` y `catch` para manejar su resolución o rechazo una vez que ocurra.

@@ -1,0 +1,85 @@
+[Jest](https://jestjs.io/) es un popular marco de pruebas (testing framework) para JavaScript, especialmente utilizado para probar aplicaciones basadas en React. Permite realizar pruebas unitarias, de integración y de extremo a extremo. A continuación, proporciono una guía básica sobre cómo realizar pruebas unitarias con Jest.
+
+### Instalación de Jest:
+
+Primero, asegúrate de tener Node.js y npm instalados. Luego, crea un nuevo proyecto o navega al directorio de tu proyecto existente y ejecuta el siguiente comando para instalar Jest:
+
+```bash
+npm install --save-dev jest
+```
+
+### Estructura de Directorios:
+
+Para Jest, se recomienda organizar las pruebas en un directorio llamado `__tests__` o con archivos que tengan el sufijo `.test.js` o `.spec.js`.
+
+### Configuración de Scripts en `package.json`:
+
+Agrega scripts para ejecutar Jest en tu archivo `package.json`:
+
+```json
+"scripts": {
+  "test": "jest",
+  "test:watch": "jest --watch"
+}
+```
+
+### Ejemplo de Prueba Unitaria:
+
+Supongamos que tienes una función simple que deseas probar en un archivo llamado `sum.js`:
+
+```javascript
+// sum.js
+function sum(a, b) {
+  return a + b;
+}
+
+module.exports = sum;
+```
+
+Ahora, crea un archivo de prueba llamado `sum.test.js`:
+
+```javascript
+// sum.test.js
+const sum = require('./sum');
+
+test('sumar 1 + 2 da 3', () => {
+  expect(sum(1, 2)).toBe(3);
+});
+```
+
+### Ejecución de Pruebas:
+
+Ejecuta las pruebas utilizando el script definido en `package.json`:
+
+```bash
+npm test
+```
+
+Este comando ejecutará todas las pruebas en tu proyecto. Si solo deseas ejecutar un conjunto específico de pruebas o deseas observar los cambios mientras desarrollas, puedes usar:
+
+```bash
+npm run test:watch
+```
+
+### Expectations y Matchers:
+
+Jest utiliza `expect` y `matchers` para realizar afirmaciones en las pruebas. Algunos ejemplos de `matchers` son:
+
+- `toBe(value)`: Compara valores primitivos.
+- `toEqual(value)`: Compara valores recursivamente.
+- `toMatch(regexp)`: Compara cadenas con expresiones regulares.
+- `toContain(item)`: Comprueba si un array o cadena contiene un elemento.
+
+### Mocking:
+
+Jest facilita el uso de mocks para simular funciones o módulos. Puedes utilizar `jest.fn()` para crear funciones simuladas.
+
+```javascript
+const mockFn = jest.fn();
+
+// Ahora puedes usar mockFn en lugar de la función real
+mockFn();
+expect(mockFn).toHaveBeenCalled();
+```
+
+Estos son solo algunos conceptos básicos para empezar con Jest. Jest proporciona muchas más características, como snapshots, configuraciones avanzadas, y es ampliamente utilizado en la comunidad de desarrollo de JavaScript para realizar pruebas de calidad. Para obtener más información, puedes consultar la documentación oficial de Jest: [Documentación de Jest](https://jestjs.io/docs/en/getting-started).

@@ -1,0 +1,46 @@
+El modelo de caja (Box Model) es un concepto fundamental en CSS que describe cómo se representa y se organiza visualmente cada elemento en una página web. Cada elemento HTML se representa como una "caja" rectangular, y el modelo de caja especifica cómo se calculan y aplican las dimensiones de esa caja. El modelo de caja consiste en cuatro partes principales: contenido, padding, border y margin.
+
+Aquí están las partes del modelo de caja:
+
+1. **Contenido (Content):**
+   - Es la parte interna de la caja que contiene el contenido real del elemento, como texto, imágenes, etc.
+   - Se define con las propiedades `width` y `height`.
+
+2. **Padding:**
+   - Es un espacio transparente alrededor del contenido dentro de la caja.
+   - Se puede establecer con las propiedades `padding-top`, `padding-right`, `padding-bottom`, y `padding-left`.
+   - `padding` se utiliza para establecer todos los lados al mismo tiempo.
+
+3. **Border:**
+   - Es una línea que rodea el contenido y el padding.
+   - Se define con las propiedades `border-width`, `border-style`, y `border-color`.
+   - `border` se utiliza para establecer todas las propiedades del borde al mismo tiempo.
+
+4. **Margin:**
+   - Es un espacio transparente fuera de la caja, que actúa como un espacio entre la caja actual y las cajas adyacentes.
+   - Se define con las propiedades `margin-top`, `margin-right`, `margin-bottom`, y `margin-left`.
+   - `margin` se utiliza para establecer todos los lados al mismo tiempo.
+
+Visualmente, el modelo de caja se representa así:
+
+```
++---------------------------------------------+
+|                    Margin                   |
+|  +---------------------------------------+  |
+|  |                  Border               |  |
+|  |  +---------------------------------+  |  |
+|  |  |            Padding              |  |  |
+|  |  |  +---------------------------+  |  |  |
+|  |  |  |        Content            |  |  |  |
+|  |  |  |                           |  |  |  |
+|  |  |  |                           |  |  |  |
+|  |  |  |                           |  |  |  |
+|  |  |  +---------------------------+  |  |  |
+|  |  +---------------------------------+  |  |
+|  +---------------------------------------+  |
++---------------------------------------------+
+```
+
+Cada parte del modelo de caja afecta las dimensiones totales del elemento. Por ejemplo, si tienes un elemento con un ancho (`width`) de 200px, un padding derecho de 10px, un borde de 2px, y un margen izquierdo de 20px, el ancho total ocupado por ese elemento será de 232px (200px de contenido + 10px de padding derecho + 2px de borde + 20px de margen izquierdo).
+
+El modelo de caja es esencial para entender y controlar el diseño y la disposición de los elementos en una página web mediante CSS.

@@ -1,0 +1,99 @@
+Flexbox (Flexible Box Layout) es un modelo de diseño en CSS que proporciona una manera eficiente de organizar y distribuir elementos en un contenedor, incluso cuando el tamaño de los elementos es desconocido o dinámico. Flexbox es especialmente útil para diseñar interfaces de usuario y diseñar disposiciones más complejas y flexibles.
+
+Aquí hay una descripción general de los conceptos clave de Flexbox:
+
+### Conceptos Básicos de Flexbox:
+
+1. **Contenedor Flex (Flex Container):**
+   - El elemento que contiene los elementos flexibles se convierte en un contenedor flex.
+   - Se activa aplicando la propiedad `display: flex;` o `display: inline-flex;` al contenedor.
+
+   ```css
+   .contenedor-flex {
+     display: flex;
+   }
+   ```
+
+2. **Elementos Flex (Flex Items):**
+   - Los hijos directos del contenedor flex se convierten en elementos flexibles.
+   - Los elementos flexibles se organizan según el eje principal (main axis) y el eje secundario (cross axis) del contenedor.
+
+   ```css
+   .elemento-flex {
+     flex: valor;
+   }
+   ```
+
+### Propiedades del Contenedor Flex:
+
+1. **`flex-direction`:**
+   - Especifica la dirección del eje principal en el contenedor flex (fila o columna).
+   - Valores: `row`, `row-reverse`, `column`, `column-reverse`.
+
+   ```css
+   .contenedor-flex {
+     flex-direction: row; /* o column, row-reverse, column-reverse */
+   }
+   ```
+
+2. **`justify-content`:**
+   - Alinea los elementos a lo largo del eje principal.
+   - Valores: `flex-start`, `flex-end`, `center`, `space-between`, `space-around`, `space-evenly`.
+
+   ```css
+   .contenedor-flex {
+     justify-content: center; /* u otros valores */
+   }
+   ```
+
+3. **`align-items`:**
+   - Alinea los elementos a lo largo del eje secundario.
+   - Valores: `flex-start`, `flex-end`, `center`, `baseline`, `stretch`.
+
+   ```css
+   .contenedor-flex {
+     align-items: center; /* u otros valores */
+   }
+   ```
+
+4. **`align-self`:**
+   - Permite a un elemento flex individual anular la alineación del eje secundario establecida por `align-items`.
+
+   ```css
+   .elemento-flex {
+     align-self: center; /* u otros valores */
+   }
+   ```
+
+### Propiedades de los Elementos Flex:
+
+1. **`flex`:**
+   - Combina las propiedades `flex-grow`, `flex-shrink`, y `flex-basis` en una única propiedad.
+   - Puede tener uno, dos o tres valores.
+
+   ```css
+   .elemento-flex {
+     flex: 1; /* o flex: 1 1 auto; u otros valores */
+   }
+   ```
+
+2. **`order`:**
+   - Especifica el orden en el que aparecen los elementos flex dentro del contenedor.
+   - Un valor entero, donde valores menores se muestran antes.
+
+   ```css
+   .elemento-flex {
+     order: 2; /* o cualquier otro valor entero */
+   }
+   ```
+
+3. **`align-self`:**
+   - Anula la alineación del eje secundario establecida por `align-items` para un elemento flex específico.
+
+   ```css
+   .elemento-flex {
+     align-self: flex-end; /* u otros valores */
+   }
+   ```
+
+Flexbox proporciona un enfoque poderoso y sencillo para crear diseños flexibles y responsivos. Puedes ajustar fácilmente el diseño cambiando las propiedades en el contenedor flex y los elementos flexibles. Además, es compatible con la mayoría de los navegadores modernos.

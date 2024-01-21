@@ -1,0 +1,361 @@
+### Módulos
+
+En Angular, los módulos son una parte fundamental de la arquitectura de la aplicación y se utilizan para organizar y estructurar el código. Un módulo en Angular es una colección cohesiva de componentes, directivas, pipes y servicios, que se agrupan para cumplir una funcionalidad específica en la aplicación. Cada aplicación Angular tiene al menos un módulo principal, conocido como el módulo raíz o "AppModule", y puede tener módulos adicionales que se utilizan para organizar y modularizar la aplicación.
+
+### Características Principales de los Módulos en Angular:
+
+1. **Definición del Módulo:**
+   - Los módulos en Angular se definen mediante la decoración `@NgModule`. La decoración `@NgModule` toma un objeto de configuración que especifica los componentes, directivas, pipes y servicios que pertenecen al módulo.
+
+   ```typescript
+   import { NgModule } from '@angular/core';
+   import { CommonModule } from '@angular/common';
+   import { MiComponente } from './mi-componente';
+
+   @NgModule({
+     declarations: [MiComponente],
+     imports: [CommonModule],
+     // Otros metadatos del módulo (providers, exports, etc.)
+   })
+   export class MiModulo { }
+   ```
+
+2. **Declaraciones (`declarations`):**
+   - La propiedad `declarations` en `@NgModule` especifica los componentes, directivas y pipes que pertenecen al módulo. Angular utiliza esta información para entender qué componentes y otros elementos son parte del módulo.
+
+3. **Importaciones (`imports`):**
+   - La propiedad `imports` en `@NgModule` especifica otros módulos cuyas exportaciones se necesitan en este módulo. Puede incluir tanto los módulos de Angular incorporados como los módulos personalizados creados por el desarrollador.
+
+4. **Exportaciones (`exports`):**
+   - La propiedad `exports` en `@NgModule` especifica los componentes, directivas y pipes del módulo que se pueden utilizar en otros módulos. Esto permite la reutilización de funcionalidades en diferentes partes de la aplicación.
+
+5. **Proveedores (`providers`):**
+   - La propiedad `providers` en `@NgModule` especifica los servicios que estarán disponibles para los componentes del módulo. Los servicios proporcionan funcionalidades compartidas y datos entre diferentes partes de la aplicación.
+
+6. **Bootstrap (`bootstrap`):**
+   - En el módulo raíz (`AppModule`), la propiedad `bootstrap` se utiliza para indicar cuál es el componente principal que se debe cargar cuando se inicia la aplicación.
+
+### Estructura Básica de un Módulo:
+
+Un módulo básico en Angular tiene una estructura similar a la siguiente:
+
+```typescript
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ComponenteUno } from './componente-uno';
+import { ComponenteDos } from './componente-dos';
+
+@NgModule({
+  declarations: [ComponenteUno, ComponenteDos],
+  imports: [CommonModule],
+  exports: [ComponenteUno, ComponenteDos],
+  providers: [MiServicio],
+})
+export class MiModulo { }
+```
+
+Este módulo incluye dos componentes (`ComponenteUno` y `ComponenteDos`), importa el módulo `CommonModule` de Angular, exporta ambos componentes para que estén disponibles en otros módulos y proporciona un servicio llamado `MiServicio`.
+
+La modularización mediante el uso de módulos en Angular ayuda a organizar el código de la aplicación, facilita la reutilización de código y mejora la mantenibilidad a medida que la aplicación crece en complejidad.
+
+### Enrutamiento
+
+En Angular, el enrutamiento se refiere a la navegación entre diferentes vistas o componentes de la aplicación. Angular proporciona un módulo de enrutamiento que permite definir rutas y gestionar la navegación entre esas rutas. Aquí te explico los conceptos clave del enrutamiento en Angular y proporciono un ejemplo básico que cubre diversas configuraciones.
+
+### Conceptos Clave del Enrutamiento en Angular:
+
+1. **RouterModule:**
+   - El módulo de enrutamiento principal se llama `RouterModule`. Debes importarlo y configurarlo en tu aplicación.
+
+   ```typescript
+   import { RouterModule } from '@angular/router';
+   ```
+
+2. **Rutas (Routes):**
+   - Las rutas son objetos que asocian una URL con un componente. Se definen en un array y se utilizan para configurar las rutas de la aplicación.
+
+   ```typescript
+   const routes: Routes = [
+     { path: 'inicio', component: InicioComponent },
+     { path: 'perfil/:id', component: PerfilComponent },
+     { path: '**', redirectTo: '/inicio' } // Redirección para rutas no coincidentes
+   ];
+   ```
+
+3. **RouterOutlet:**
+   - Es una directiva Angular que actúa como un marcador de posición para el componente que se cargará según la ruta activa. Se coloca en la plantilla del componente principal.
+
+   ```html
+   <router-outlet></router-outlet>
+   ```
+
+4. **RouterLink:**
+   - Es una directiva Angular que se utiliza para crear enlaces de navegación en la interfaz de usuario. Puedes usarlo en lugar de `<a>` para vincular a rutas.
+
+   ```html
+   <a routerLink="/inicio">Inicio</a>
+   ```
+
+5. **ActivatedRoute:**
+   - Es un servicio que proporciona información sobre la ruta activa y se puede inyectar en componentes para acceder a parámetros de ruta y otros datos relacionados.
+
+   ```typescript
+   import { ActivatedRoute } from '@angular/router';
+
+   constructor(private route: ActivatedRoute) {
+     const id = this.route.snapshot.params['id'];
+   }
+   ```
+
+### Ejemplo de Configuración de Enrutamiento:
+
+Supongamos que tienes dos componentes: `InicioComponent` y `PerfilComponent`. Aquí hay un ejemplo de cómo configurar el enrutamiento en Angular:
+
+1. **Crear los Componentes:**
+   - Crea los componentes `InicioComponent` y `PerfilComponent`:
+
+   ```typescript
+   // inicio.component.ts
+   import { Component } from '@angular/core';
+
+   @Component({
+     template: '<h2>Inicio</h2>',
+   })
+   export class InicioComponent { }
+   ```
+
+   ```typescript
+   // perfil.component.ts
+   import { Component } from '@angular/core';
+   import { ActivatedRoute } from '@angular/router';
+
+   @Component({
+     template: '<h2>Perfil del usuario con ID {{ userId }}</h2>',
+   })
+   export class PerfilComponent {
+     userId: string;
+
+     constructor(private route: ActivatedRoute) {
+       this.userId = this.route.snapshot.params['id'];
+     }
+   }
+   ```
+
+2. **Configurar las Rutas:**
+   - Configura las rutas en un array en tu módulo principal (`app.module.ts`).
+
+   ```typescript
+   import { RouterModule, Routes } from '@angular/router';
+   import { InicioComponent } from './inicio.component';
+   import { PerfilComponent } from './perfil.component';
+
+   const routes: Routes = [
+     { path: 'inicio', component: InicioComponent },
+     { path: 'perfil/:id', component: PerfilComponent },
+     { path: '**', redirectTo: '/inicio' },
+   ];
+
+   @NgModule({
+     imports: [RouterModule.forRoot(routes)],
+     exports: [RouterModule],
+   })
+   export class AppRoutingModule { }
+   ```
+
+3. **Configurar el Componente Principal:**
+   - Configura el componente principal (`app.component.ts`) para usar el `RouterOutlet`.
+
+   ```typescript
+   import { Component } from '@angular/core';
+
+   @Component({
+     selector: 'app-root',
+     template: '<router-outlet></router-outlet>',
+   })
+   export class AppComponent { }
+   ```
+
+4. **Configurar el Módulo Principal:**
+   - Importa el módulo de enrutamiento en el módulo principal (`app.module.ts`).
+
+   ```typescript
+   import { BrowserModule } from '@angular/platform-browser';
+   import { NgModule } from '@angular/core';
+   import { AppRoutingModule } from './app-routing.module';
+   import { AppComponent } from './app.component';
+
+   @NgModule({
+     declarations: [AppComponent],
+     imports: [BrowserModule, AppRoutingModule],
+     bootstrap: [AppComponent],
+   })
+   export class AppModule { }
+   ```
+
+Este ejemplo básico abarca la configuración de rutas, la navegación entre componentes y el acceso a parámetros de ruta. Puedes expandir este ejemplo según las necesidades específicas de tu aplicación.
+
+### Components
+
+En Angular, los componentes son bloques fundamentales para la construcción de la interfaz de usuario (UI) de una aplicación. Un componente en Angular encapsula la lógica y la presentación de una parte específica de la interfaz de usuario. Cada componente está compuesto por tres partes clave: decorador, clase y plantilla. Aquí te explico cada una de estas partes y otros conceptos importantes relacionados con los componentes en Angular:
+
+### 1. Estructura Básica de un Componente:
+
+Un componente en Angular típicamente consta de tres partes:
+
+- **Decorador (`@Component`):**
+  - Es una anotación que proporciona metadatos sobre cómo Angular debe procesar el componente. El decorador `@Component` incluye información como la plantilla, los estilos, las directivas y otros metadatos.
+
+  ```typescript
+  import { Component } from '@angular/core';
+
+  @Component({
+    selector: 'mi-componente',
+    templateUrl: './mi-componente.component.html',
+    styleUrls: ['./mi-componente.component.css']
+  })
+  export class MiComponente {
+    // Propiedades y métodos del componente
+  }
+  ```
+
+- **Clase del Componente:**
+  - La clase del componente contiene la lógica del componente, como propiedades y métodos. Esta clase es exportada y utilizada en otros archivos cuando necesitas interactuar con el componente.
+
+  ```typescript
+  export class MiComponente {
+    // Propiedades del componente
+    titulo: string = 'Hola, mundo!';
+    
+    // Métodos del componente
+    cambiarTitulo(nuevoTitulo: string): void {
+      this.titulo = nuevoTitulo;
+    }
+  }
+  ```
+
+- **Plantilla:**
+  - La plantilla es la representación visual del componente y define cómo se verá en la interfaz de usuario. La plantilla utiliza HTML y puede incluir vinculación de datos, directivas y otros elementos.
+
+  ```html
+  <!-- mi-componente.component.html -->
+  <div>
+    <h1>{{ titulo }}</h1>
+    <button (click)="cambiarTitulo('Nuevo Título')">Cambiar Título</button>
+  </div>
+  ```
+
+### 2. Selector (`selector`):
+
+El selector es un identificador único para el componente que se utiliza para insertar el componente en una plantilla de otro componente. Puede ser un elemento HTML personalizado o un atributo.
+
+```typescript
+@Component({
+  selector: 'mi-componente', // Selector como elemento
+  templateUrl: './mi-componente.component.html',
+})
+export class MiComponente { }
+```
+
+### 3. Vinculación de Datos (`Data Binding`):
+
+Angular admite diversos tipos de vinculación de datos que permiten la comunicación entre la lógica del componente y la plantilla. Algunos tipos comunes de vinculación de datos incluyen:
+
+- **Interpolación:**
+  - Enlaza variables del componente a la plantilla.
+
+  ```html
+  <h1>{{ titulo }}</h1>
+  ```
+
+- **Propiedad de Atributo:**
+  - Enlaza propiedades del componente a atributos de elementos HTML.
+
+  ```html
+  <img [src]="imagenUrl" />
+  ```
+
+- **Evento:**
+  - Captura eventos del usuario y ejecuta métodos del componente.
+
+  ```html
+  <button (click)="cambiarTitulo('Nuevo Título')">Cambiar Título</button>
+  ```
+
+### 4. Ciclo de Vida del Componente:
+
+Angular proporciona un ciclo de vida predefinido para los componentes que permite ejecutar código en momentos específicos, como la inicialización, actualización y destrucción del componente. Algunos de los métodos del ciclo de vida más comunes son:
+
+- **ngOnInit:**
+  - Se ejecuta después de que Angular ha inicializado todas las propiedades del componente.
+
+- **ngOnChanges:**
+  - Se ejecuta cuando las propiedades de entrada del componente cambian.
+
+- **ngOnDestroy:**
+  - Se ejecuta justo antes de que Angular destruya el componente.
+
+### 5. Directivas:
+
+Las directivas son atributos que se aplican a elementos HTML para extender su comportamiento o modificar su apariencia. Angular incluye directivas incorporadas (como `ngIf`, `ngFor`, etc.) y también permite crear directivas personalizadas.
+
+### 6. Servicios:
+
+Los servicios en Angular son objetos de unica instancia que pueden ser inyectados en componentes para compartir funcionalidades entre ellos. Los servicios son una forma común de manejar la lógica de negocio, la comunicación con servidores y la manipulación de datos.
+
+### Data binding [] y [()]
+
+En Angular, la diferencia entre `[]` y `[(ngModel)]` en la vinculación de datos está relacionada con la dirección del flujo de datos. Ambas son formas de vinculación de datos, pero se utilizan en contextos ligeramente diferentes:
+
+1. **`[]` (One-Way Binding):**
+   - Utilizado para la vinculación unidireccional, donde los datos fluyen desde la clase del componente hacia la plantilla (vista).
+   - Se utiliza para enlazar valores de propiedades del componente a propiedades o atributos de elementos HTML en la plantilla.
+
+   Ejemplo:
+
+   ```html
+   <!-- Vinculación unidireccional desde el componente a la plantilla -->
+   <div [textContent]="mensajeDelComponente"></div>
+   ```
+
+   ```typescript
+   // En el componente
+   mensajeDelComponente: string = "Hola, mundo!";
+   ```
+
+2. **`[(ngModel)]` (Two-Way Binding):**
+   - Utilizado para la vinculación bidireccional, donde los datos fluyen tanto desde la clase del componente hacia la plantilla como desde la plantilla hacia la clase del componente.
+   - Se utiliza comúnmente en formularios para mantener sincronizados los datos de entrada del usuario con las propiedades del componente.
+
+   Ejemplo:
+
+   ```html
+   <!-- Vinculación bidireccional con ngModel -->
+   <input [(ngModel)]="nombreDelComponente" />
+   ```
+
+   ```typescript
+   // En el componente
+   nombreDelComponente: string = "John Doe";
+   ```
+
+   - Para utilizar `[(ngModel)]`, debes importar el módulo `FormsModule` de Angular y agregarlo a los `imports` en el módulo que contiene el componente.
+
+   ```typescript
+   // En el módulo
+   import { FormsModule } from '@angular/forms';
+
+   @NgModule({
+     imports: [FormsModule],
+     // ...
+   })
+   ```
+
+La principal diferencia radica en la dirección del flujo de datos:
+
+- **`[]` (One-Way Binding):**
+  - De la clase del componente a la plantilla.
+
+- **`[(ngModel)]` (Two-Way Binding):**
+  - Bidireccional, tanto de la clase del componente a la plantilla como de la plantilla a la clase del componente.
+
+Es importante destacar que `[(ngModel)]` requiere la importación del módulo `FormsModule` y su configuración adecuada en el módulo que contiene el componente. Además, su uso se limita comúnmente a formularios y no se utiliza ampliamente en otros contextos debido a la complejidad que puede agregar a la gestión del estado.
