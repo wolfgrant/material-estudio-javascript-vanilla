@@ -1,0 +1,69 @@
+
+### Pseudo-clases
+Las pseudo-clases en CSS son selectores especiales que te permiten seleccionar elementos basados en su estado o posición en relación con el documento, sin necesidad de añadir clases adicionales al marcado HTML. Aquí tienes algunas de las pseudo-clases más comunes:
+
+1. **:hover**: Selecciona un elemento cuando el cursor del ratón está sobre él.
+
+   ```css
+   a:hover {
+     color: red;
+   }
+   ```
+
+2. **:active**: Selecciona un elemento activado (cuando se hace clic y se mantiene presionado).
+
+   ```css
+   button:active {
+     background-color: yellow;
+   }
+   ```
+
+3. **:focus**: Selecciona un elemento que tiene el foco.
+
+   ```css
+   input:focus {
+     border: 2px solid blue;
+   }
+   ```
+
+4. **:first-child**: Selecciona el primer hijo de un elemento.
+
+   ```css
+   li:first-child {
+     color: green;
+   }
+   ```
+
+5. **:last-child**: Selecciona el último hijo de un elemento.
+
+   ```css
+   li:last-child {
+     color: blue;
+   }
+   ```
+
+6. **:nth-child(n)**: Selecciona un elemento que es el enésimo hijo de su padre.
+
+   ```css
+   li:nth-child(2) {
+     background-color: lightgray;
+   }
+   ```
+
+7. **:nth-child(odd/even)**: Selecciona elementos impares o pares.
+
+   ```css
+   tr:nth-child(odd) {
+     background-color: #f2f2f2;
+   }
+   ```
+
+8. **:not(selector)**: Selecciona todos los elementos excepto aquellos que coincidan con el selector.
+
+   ```css
+   input:not([type="submit"]) {
+     border: 1px solid #ccc;
+   }
+   ```
+
+Estas son solo algunas de las pseudo-clases disponibles en CSS. Permiten aplicar estilos de manera más dinámica según el estado o la posición de los elementos en el documento.

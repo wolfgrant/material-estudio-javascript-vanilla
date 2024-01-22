@@ -71,3 +71,81 @@ Selector de Clase Anidado (.contenedor .mi-clase):
 
 La especificidad depende del número y tipo de selectores utilizados.
 Anula a los selectores de tipo en un nivel más alto de la jerarquía.
+
+selectores sin SASS
+
+En CSS, los selectores son patrones que seleccionan y estilizan los elementos HTML. Aquí tienes algunos de los selectores básicos sin utilizar Sass:
+
+1. **Selector de tipo**: Selecciona todos los elementos de un tipo específico.
+
+   ```css
+   p {
+     color: blue;
+   }
+   ```
+
+2. **Selector de clase**: Selecciona elementos que tienen un atributo de clase específico.
+
+   ```css
+   .mi-clase {
+     font-size: 16px;
+   }
+   ```
+
+3. **Selector de ID**: Selecciona un elemento con un ID específico.
+
+   ```css
+   #mi-id {
+     background-color: yellow;
+   }
+   ```
+
+4. **Selector descendente**: Selecciona elementos que son descendientes de otro elemento.
+
+   ```css
+   div p {
+     color: green;
+   }
+   ```
+
+5. **Selector de atributo**: Selecciona elementos con un atributo específico.
+
+   ```css
+   input[type="text"] {
+     border: 1px solid #ccc;
+   }
+   ```
+
+6. **Selector de grupo**: Agrupa varios selectores para aplicar las mismas reglas.
+
+   ```css
+   h1, h2, h3 {
+     font-family: "Arial", sans-serif;
+   }
+   ```
+
+7. **Selector de hijo directo**: Selecciona elementos que son hijos directos de otro elemento.
+
+   ```css
+   ul > li {
+     list-style-type: square;
+   }
+   ```
+
+8. **Selector de pseudo-clase**: Selecciona elementos en un estado específico.
+
+   ```css
+   a:hover {
+     color: red;
+   }
+   ```
+
+9. **Selector de pseudo-elemento** (`::before`, `::after`): Selecciona partes específicas de un elemento.
+
+   ```css
+   p::before {
+     content: "🔥 ";
+   }
+   ```
+
+Estos son solo algunos ejemplos de selectores en CSS. La combinación de estos selectores permite seleccionar y estilizar elementos de manera específica en tus documentos HTML.

@@ -65,3 +65,53 @@ En este ejemplo:
 - `Object.getOwnPropertySymbols(objeto)` devuelve un array con todos los símbolos utilizados como propiedades en el objeto.
 
 Los símbolos son útiles cuando necesitas crear propiedades únicas en objetos y evita colisiones con otras propiedades. También se utilizan en situaciones donde la identidad única es esencial, como en la implementación de ciertos métodos y comportamientos en bibliotecas y frameworks.
+
+Lo que mencionan sobre "primitives" en JavaScript está relacionado con la forma en que JavaScript maneja los tipos de datos primitivos en comparación con los objetos (que incluyen arrays y funciones).
+
+JavaScript tiene dos categorías de tipos de datos: primitivos y objetos.
+
+1. **Primitivos:**
+   - Números
+   - Cadenas (Strings)
+   - Booleanos
+   - Undefined
+   - Null
+   - Symbol (nuevo en ECMAScript 6)
+
+   Cuando pasas un valor primitivo a una función o lo asignas a una variable, se pasa por valor. Es decir, se crea una copia independiente de ese valor. Modificar la copia no afectará la variable original.
+
+   ```javascript
+   let x = 5;
+
+   function modifyValue(value) {
+     value = 10;
+     console.log(value); // 10
+   }
+
+   modifyValue(x);
+   console.log(x); // 5
+   ```
+
+2. **Objetos (incluyendo Arrays y Funciones):**
+   - Objetos
+   - Arrays
+   - Funciones
+   - ...
+
+   Cuando pasas un objeto (incluyendo arrays y funciones) a una función o lo asignas a una variable, se pasa por referencia. En este caso, la variable contiene una referencia al objeto, no una copia. Modificar el objeto afectará la variable original.
+
+   ```javascript
+   let obj = { prop: 'value' };
+
+   function modifyObject(object) {
+     object.prop = 'new value';
+     console.log(object.prop); // 'new value'
+   }
+
+   modifyObject(obj);
+   console.log(obj.prop); // 'new value'
+   ```
+
+Por lo tanto, la diferencia clave radica en cómo se manejan las asignaciones y las modificaciones. Los valores primitivos se pasan por valor, mientras que los objetos se pasan por referencia.
+
+En el contexto de la cita que proporcionaste, podría referirse a que JavaScript "no sabe" si un valor es pasado por referencia o por valor, pero más específicamente, es importante comprender cómo se manejan los primitivos y los objetos en términos de copias y referencias al trabajar con funciones y asignaciones.

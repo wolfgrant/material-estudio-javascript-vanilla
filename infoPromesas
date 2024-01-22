@@ -81,3 +81,38 @@ console.log(miPromesa); // Output: Promise { <pending> }
 ```
 
 En este ejemplo, `miPromesa` está en estado `pending` porque la tarea asíncrona en su interior (simulada con un temporizador) aún no se ha completado. Una vez que la tarea asíncrona se complete, la promesa pasará a un estado de `fulfilled` (cumplida) si la operación fue exitosa, o a un estado de `rejected` (rechazada) si ocurrió un error. Durante el tiempo que la promesa está pendiente, puedes encadenar `then` y `catch` para manejar su resolución o rechazo una vez que ocurra.
+
+Una promesa con async await puede ser la siguiente
+
+```javascript
+// Función que devuelve una promesa
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    // Simulando una operación asincrónica (por ejemplo, una solicitud HTTP)
+    setTimeout(() => {
+      const success = true;
+
+      if (success) {
+        resolve("Datos obtenidos correctamente");
+      } else {
+        reject("Error al obtener datos");
+      }
+    }, 2000); // Simulando una operación que tarda 2 segundos
+  });
+}
+
+// Función que utiliza async/await para manejar la promesa
+async function getData() {
+  try {
+    // Espera a que la promesa se resuelva
+    const result = await fetchData();
+    console.log(result);
+  } catch (error) {
+    // Maneja cualquier error que se produzca durante la ejecución de la promesa
+    console.error(error);
+  }
+}
+
+// Llamada a la función que utiliza async/await
+getData();
+```

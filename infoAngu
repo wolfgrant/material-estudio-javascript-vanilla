@@ -359,3 +359,61 @@ La principal diferencia radica en la dirección del flujo de datos:
   - Bidireccional, tanto de la clase del componente a la plantilla como de la plantilla a la clase del componente.
 
 Es importante destacar que `[(ngModel)]` requiere la importación del módulo `FormsModule` y su configuración adecuada en el módulo que contiene el componente. Además, su uso se limita comúnmente a formularios y no se utiliza ampliamente en otros contextos debido a la complejidad que puede agregar a la gestión del estado.
+
+En Angular, el data binding es un mecanismo que permite la sincronización automática entre el modelo de la aplicación (representado en TypeScript) y la vista (representada en HTML). Hay varios tipos de data binding en Angular, y aquí se explica cada uno de ellos:
+
+1. **Interpolación (`{{ }}`)**:
+   - **Uso**: Se utiliza para insertar valores en el contenido de elementos HTML.
+   - **Ejemplo**:
+
+     ```html
+     <p>{{ nombre }}</p>
+     ```
+
+     ```typescript
+     // En TypeScript
+     nombre = "John";
+     ```
+
+2. **Property Binding (`[]`)**:
+   - **Uso**: Se utiliza para enlazar atributos de elementos HTML o propiedades de componentes con expresiones en TypeScript.
+   - **Ejemplo**:
+
+     ```html
+     <img [src]="imagenUrl" alt="Imagen">
+     ```
+
+     ```typescript
+     // En TypeScript
+     imagenUrl = "url_de_la_imagen.jpg";
+     ```
+
+3. **Event Binding (`()`)**:
+   - **Uso**: Se utiliza para manejar eventos del DOM, como clics, cambios, etc.
+   - **Ejemplo**:
+
+     ```html
+     <button (click)="onBotonClic()">Click me</button>
+     ```
+
+     ```typescript
+     // En TypeScript
+     onBotonClic() {
+       console.log("Botón clickeado");
+     }
+     ```
+
+4. **Two-Way Binding (`[()]` o `ngModel` para formularios)**:
+   - **Uso**: Combina la interpolación y el property binding para lograr una sincronización bidireccional entre el modelo y la vista. Se usa principalmente en la manipulación de formularios.
+   - **Ejemplo**:
+
+     ```html
+     <input [(ngModel)]="nombre">
+     ```
+
+     ```typescript
+     // En TypeScript
+     nombre = "John";
+     ```
+
+Estos son los principales tipos de data binding en Angular. Cada uno tiene su uso específico y facilita la creación de aplicaciones más dinámicas y reactivas al cambio de datos.

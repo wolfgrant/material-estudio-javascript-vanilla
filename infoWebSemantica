@@ -1,0 +1,73 @@
+La web semántica es un concepto que se refiere a la estructuración y marcado de los contenidos web de manera que las máquinas puedan entender el significado de la información. En lugar de simplemente presentar información en formato legible para humanos, la web semántica busca dotar a las páginas web de significado y contexto, permitiendo a los sistemas automatizados comprender la información de manera más precisa.
+
+Aquí hay algunos conceptos clave sobre la web semántica:
+
+1. **HTML5 y Semántica:**
+   - HTML5 introdujo una serie de elementos semánticos que permiten marcar claramente el propósito y contenido de diferentes secciones de una página web. Algunos de estos elementos incluyen `<header>`, `<nav>`, `<article>`, `<section>`, `<footer>`, etc.
+   - Ejemplo de uso de elementos semánticos:
+
+    ```html
+    <header>
+      <h1>Titulo del Sitio</h1>
+      <p>Descripción del sitio web</p>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/about">Acerca de</a></li>
+        <li><a href="/contact">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <section>
+      <article>
+        <h2>Artículo 1</h2>
+        <p>Contenido del artículo...</p>
+      </article>
+
+      <article>
+        <h2>Artículo 2</h2>
+        <p>Contenido del artículo...</p>
+      </article>
+    </section>
+
+    <footer>
+      <p>Pie de página</p>
+    </footer>
+    ```
+
+2. **Microdatos, RDFa y JSON-LD:**
+   - Además de los elementos semánticos de HTML, hay tres formatos principales para agregar metadatos semánticos a una página web: Microdatos, RDFa y JSON-LD.
+   - Ejemplo de uso de JSON-LD:
+
+    ```html
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "John Doe",
+        "jobTitle": "Web Developer",
+        "url": "https://example.com",
+        "sameAs": ["https://www.linkedin.com/in/johndoe", "https://twitter.com/johndoe"]
+      }
+    </script>
+    ```
+
+3. **Linked Data:**
+   - Linked Data es un principio de la web semántica que implica enlazar conjuntos de datos para crear una red más amplia y significativa de información.
+   - RDF (Resource Description Framework) se utiliza para modelar y enlazar datos en la web semántica.
+
+4. **Ontologías:**
+   - Las ontologías definen vocabularios y relaciones entre conceptos. Algunas ontologías populares en la web semántica incluyen Schema.org y Dublin Core.
+
+5. **Beneficios de la Web Semántica:**
+   - Mejora la búsqueda y recuperación de información.
+   - Facilita la interoperabilidad entre sistemas.
+   - Permite una mejor comprensión de los datos por parte de las máquinas.
+
+6. **Desafíos:**
+   - La adopción generalizada y la creación de ontologías estandarizadas son desafíos continuos.
+   - La educación sobre la importancia y el uso de la web semántica es fundamental.
+
+La implementación efectiva de la web semántica requiere una comprensión profunda de los estándares y prácticas asociadas. En general, se trata de mejorar la capacidad de las máquinas para interpretar y utilizar la información en la web de una manera más inteligente.
