@@ -1,0 +1,110 @@
+El concepto de "scope" en JavaScript se refiere al contexto en el cual las variables están definidas y pueden ser accedidas. Hay dos tipos principales de scope en JavaScript: el scope global y el scope local.
+
+### Scope Global:
+
+1. **Variables Globales:**
+   - Una variable declarada fuera de cualquier función o bloque tiene un ámbito global.
+   ```javascript
+   var globalVariable = 'Soy global';
+
+   function ejemplo() {
+     console.log(globalVariable); // Acceso a la variable global
+   }
+   ```
+
+### Scope Local:
+
+1. **Variables Locales:**
+   - Una variable declarada dentro de una función tiene un ámbito local y no es accesible fuera de esa función.
+   ```javascript
+   function ejemplo() {
+     var localVariable = 'Soy local';
+     console.log(localVariable);
+   }
+
+   ejemplo();
+   // console.log(localVariable); // Error, localVariable no está definida aquí
+   ```
+
+2. **Bloques de Código y `let`/`const`:**
+   - Con `let` y `const`, las variables también pueden tener un ámbito de bloque dentro de estructuras como `if`, `for`, etc.
+   ```javascript
+   if (true) {
+     let bloqueVariable = 'Soy de bloque';
+     console.log(bloqueVariable);
+   }
+
+   // console.log(bloqueVariable); // Error, bloqueVariable no está definida aquí
+   ```
+
+3. **Funciones Anidadas:**
+   - Las funciones pueden ser anidadas y tienen acceso al ámbito de las funciones que las contienen.
+   ```javascript
+   function externa() {
+     var externaVariable = 'Soy externa';
+
+     function interna() {
+       console.log(externaVariable);
+     }
+
+     interna();
+   }
+
+   externa();
+   ```
+
+### Reglas de Scope:
+
+1. **Hoisting:**
+   - Las declaraciones de variables (`var`) son elevadas (hoisted) al inicio de su contexto de ejecución, pero no sus asignaciones.
+   ```javascript
+   console.log(x); // undefined
+   var x = 5;
+   console.log(x); // 5
+   ```
+
+2. **Variables sin `var`, `let`, o `const`:**
+   - Si no se usa `var`, `let` o `const`, la variable se convierte automáticamente en global (si se encuentra en el código global) o en propiedad del objeto `window`.
+   ```javascript
+   function ejemplo() {
+     sinVar = 'Soy global';
+   }
+
+   ejemplo();
+   console.log(sinVar); // 'Soy global'
+   ```
+
+3. **Cierre (Closures):**
+   - Un cierre ocurre cuando una función interna tiene acceso a las variables de su función externa, incluso después de que la función externa haya terminado.
+   ```javascript
+   function exterior() {
+     var exteriorVariable = 'Exterior';
+
+     function interior() {
+       console.log(exteriorVariable);
+     }
+
+     return interior;
+   }
+
+   var cerrar = exterior();
+   cerrar(); // 'Exterior'
+   ```
+
+4. **`this` en Funciones:**
+   - El valor de `this` depende de cómo se invoca la función.
+   ```javascript
+   function ejemplo() {
+     console.log(this);
+   }
+
+   ejemplo(); // this apunta al objeto global o undefined en modo estricto
+
+   var objeto = {
+     metodo: ejemplo
+   };
+
+   objeto.metodo(); // this apunta al objeto
+   ```
+
+Estos son los aspectos básicos del scope en JavaScript. Entender y aplicar correctamente los conceptos de scope es esencial para evitar problemas con las variables y escribir código más limpio y eficiente.

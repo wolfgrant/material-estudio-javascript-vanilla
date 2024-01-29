@@ -1,0 +1,243 @@
+### Para consumir una API en una aplicación Vue.js, generalmente se utiliza la librería Axios, que es una herramienta popular para hacer solicitudes HTTP en JavaScript. A continuación, te proporcionaré una guía paso a paso para consumir una API en Vue.js utilizando Axios:
+
+### Paso 1: Instalar Axios
+
+Asegúrate de tener Axios instalado en tu proyecto. Puedes instalarlo utilizando npm o yarn:
+
+```bash
+npm install axios
+# o
+yarn add axios
+```
+
+### Paso 2: Configurar Axios en tu Proyecto
+
+En el archivo principal de tu aplicación (por lo general, `main.js`), importa y configura Axios:
+
+```javascript
+// main.js
+import { createApp } from 'vue';
+import App from './App.vue';
+import axios from 'axios';
+
+const app = createApp(App);
+
+// Configurar Axios como propiedad global en Vue
+app.config.globalProperties.$axios = axios;
+
+app.mount('#app');
+```
+
+### Paso 3: Hacer Solicitudes HTTP en un Componente
+
+En un componente de Vue, puedes usar Axios para realizar solicitudes HTTP. Aquí hay un ejemplo básico:
+
+```vue
+<template>
+  <div>
+    <h1>Lista de Usuarios</h1>
+    <ul>
+      <li v-for="user in users" :key="user.id">{{ user.name }}</li>
+    </ul>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      users: []
+    };
+  },
+  mounted() {
+    // Hacer una solicitud GET a una API de ejemplo (puedes cambiar la URL)
+    this.$axios.get('https://jsonplaceholder.typicode.com/users')
+      .then(response => {
+        // Al recibir la respuesta, actualiza el array de usuarios
+        this.users = response.data;
+      })
+      .catch(error => {
+        console.error('Error al obtener usuarios:', error);
+      });
+  }
+};
+</script>
+
+<style>
+/* Estilos del componente */
+</style>
+```
+
+Este es un ejemplo básico de cómo consumir una API en Vue.js. Puedes ajustar el código según las necesidades específicas de tu aplicación y la API que estás utilizando. Recuerda manejar errores y estados de carga según sea necesario para mejorar la robustez de tu aplicación.
+
+### Estructura de componente
+
+```vue
+<template>
+  <div>
+    <h1>Lista de Usuarios</h1>
+    <ul>
+      <li v-for="user in users" :key="user.id">{{ user.name }}</li>
+    </ul>
+  </div>
+</template>
+```
+
+En la sección del `<template>`, defines la estructura del componente en Vue.js. En este caso, estás creando una simple lista de usuarios.
+
+- `<h1>`: Encabezado que muestra "Lista de Usuarios".
+- `<ul>` y `<li>`: Elementos de lista donde se mostrarán los nombres de los usuarios.
+
+```javascript
+<script>
+export default {
+  data() {
+    return {
+      users: []
+    };
+  },
+  mounted() {
+    // Hacer una solicitud GET a una API de ejemplo (puedes cambiar la URL)
+    this.$axios.get('https://jsonplaceholder.typicode.com/users')
+      .then(response => {
+        // Al recibir la respuesta, actualiza el array de usuarios
+        this.users = response.data;
+      })
+      .catch(error => {
+        console.error('Error al obtener usuarios:', error);
+      });
+  }
+};
+</script>
+```
+
+En la sección `<script>`, defines la lógica del componente. Aquí tienes varias secciones clave:
+
+- **`export default { ... }`**: Exportas un objeto que representa el componente. Este objeto tiene varias propiedades y métodos que definen el comportamiento del componente.
+
+  - **`data() { ... }`**: Define los datos del componente. En este caso, solo hay un dato llamado `users`, que es un array que se llenará con la respuesta de la API.
+
+  - **`mounted() { ... }`**: Este método es un "hook" de ciclo de vida. Se ejecuta después de que el componente se ha montado en el DOM. Aquí es donde haces la solicitud a la API utilizando Axios.
+
+    - **`this.$axios.get('https://jsonplaceholder.typicode.com/users')`**: Hace una solicitud GET a la API de ejemplo. Puedes cambiar la URL según tus necesidades.
+
+    - **`.then(response => { ... })`**: Cuando la solicitud es exitosa, manejas la respuesta. En este caso, actualizas el array `users` con los datos recibidos de la API.
+
+    - **`.catch(error => { ... })`**: Maneja cualquier error que pueda ocurrir durante la solicitud e imprime un mensaje de error en la consola.
+
+```css
+<style>
+/* Estilos del componente */
+</style>
+```
+
+En la sección `<style>`, puedes agregar estilos específicos para este componente. En este ejemplo, no se han agregado estilos, pero puedes personalizarlo según tus necesidades.
+
+Esta estructura es típica de un componente Vue.js y sigue el patrón de un componente de archivo único (SFC, por sus siglas en inglés). Los SFCs son una forma conveniente de definir componentes en Vue.js, ya que agrupan la plantilla, la lógica y los estilos en un solo archivo.
+
+En Vue.js, la gestión del estado se realiza típicamente utilizando el objeto `data` en los componentes para almacenar y reactivamente actualizar los datos que se muestran en la interfaz de usuario. Además, Vue 3 introduce el uso de la función `ref` para crear variables reactivas y proporciona el sistema de reactividad de Vue, que hace que las dependencias se rastreen automáticamente.
+
+A continuación, te mostraré cómo utilizar `ref` y cómo funciona el sistema de reactividad en Vue:
+
+### Ref y Reactive:
+
+1. **Ref:**
+   - `ref` es una función que se utiliza para crear variables reactivas. Puedes importarla de Vue y usarla en tu componente.
+
+   ```javascript
+   import { ref } from 'vue';
+
+   export default {
+     setup() {
+       const myVariable = ref('Hola, Vue!');
+       return { myVariable };
+     }
+   };
+   ```
+
+   - En este ejemplo, `myVariable` es una variable reactiva que puedes usar en la plantilla y que se actualizará automáticamente cuando cambie.
+
+2. **Reactividad con `ref`:**
+   - Cuando asignas un nuevo valor a una variable creada con `ref`, Vue detecta automáticamente el cambio y actualiza cualquier parte de la interfaz de usuario que dependa de esa variable.
+
+   ```javascript
+   import { ref } from 'vue';
+
+   export default {
+     setup() {
+       const count = ref(0);
+
+       function increment() {
+         count.value++;
+       }
+
+       return { count, increment };
+     }
+   };
+   ```
+
+   ```html
+   <template>
+     <div>
+       <p>{{ count }}</p>
+       <button @click="increment">Incrementar</button>
+     </div>
+   </template>
+   ```
+
+   - En este ejemplo, cada vez que haces clic en el botón, la variable `count` se incrementa y la interfaz de usuario se actualiza automáticamente.
+
+### Observadores (`watch`):
+
+Además de `ref`, Vue proporciona la función `watch` para observar cambios en las variables y realizar acciones en respuesta a esos cambios.
+
+1. **Watch:**
+   - `watch` permite observar cambios en una variable y ejecutar una función de devolución de llamada cuando la variable cambia.
+
+   ```javascript
+   import { ref, watch } from 'vue';
+
+   export default {
+     setup() {
+       const myVariable = ref('Hola, Vue!');
+
+       watch(myVariable, (newValue, oldValue) => {
+         console.log(`Nuevo valor: ${newValue}, Antiguo valor: ${oldValue}`);
+       });
+
+       return { myVariable };
+     }
+   };
+   ```
+
+   - En este ejemplo, cada vez que `myVariable` cambia, la función de devolución de llamada dentro de `watch` se ejecuta.
+
+   - También puedes usar `watch` para observar múltiples variables o incluso funciones reactivas.
+
+### Computadas (`computed`):
+
+Las computadas son funciones que realizan cálculos basados en variables reactivas y se actualizan automáticamente cuando alguna de esas variables cambia.
+
+1. **Computed:**
+   - `computed` se utiliza para crear computadas en Vue.
+
+   ```javascript
+   import { ref, computed } from 'vue';
+
+   export default {
+     setup() {
+       const firstName = ref('John');
+       const lastName = ref('Doe');
+
+       const fullName = computed(() => {
+         return `${firstName.value} ${lastName.value}`;
+       });
+
+       return { firstName, lastName, fullName };
+     }
+   };
+   ```
+
+   - En este ejemplo, `fullName` es una computada que concatena el `firstName` y el `lastName`. Si cualquiera de estos cambia, `fullName` se actualiza automáticamente.
+
+Estas son algunas de las herramientas que Vue.js proporciona para gestionar el estado y reaccionar a los cambios en los datos. Puedes utilizar `ref`, `watch`, y `computed` para construir aplicaciones Vue reactivas y mantener una interfaz de usuario consistente con los datos subyacentes.

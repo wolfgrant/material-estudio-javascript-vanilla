@@ -1,0 +1,42 @@
+¡Hola! La principal diferencia entre TypeScript (TS) y JavaScript (JS) radica en que TypeScript es un superset de JavaScript. Esto significa que TypeScript extiende las capacidades de JavaScript al agregar características de programación orientada a objetos y tipos estáticos. Aquí hay algunas diferencias clave:
+
+1. **Tipado estático:** TypeScript permite la definición de tipos estáticos, lo que significa que puedes declarar el tipo de una variable antes de usarla. Esto ayuda a detectar errores en tiempo de compilación en lugar de en tiempo de ejecución. JavaScript, por otro lado, es de tipado dinámico, lo que significa que los tipos se infieren en tiempo de ejecución.
+JavaScript es un lenguaje de tipado debil y dinámico, por que si se coloca let a = "HOLA" y luego dices a = 2, el tipo de a, se convierte de string a number y por eso es dinámico
+
+    TypeScript:
+    ```typescript
+    let mensaje: string = "Hola";
+    ```
+
+    JavaScript equivalente:
+    ```javascript
+    let mensaje = "Hola";
+    ```
+
+2. **Compilación:** TypeScript requiere un proceso de compilación antes de ejecutarse en un navegador o entorno Node.js. Durante la compilación, el código TypeScript se traduce a JavaScript. En cambio, JavaScript se interpreta directamente en tiempo de ejecución sin necesidad de un paso de compilación.
+
+3. **Orientación a objetos:** TypeScript soporta programación orientada a objetos de manera más completa que JavaScript. Puedes usar clases, interfaces y otros conceptos orientados a objetos en TypeScript.
+
+    TypeScript:
+    ```typescript
+    class Persona {
+        constructor(public nombre: string, public edad: number) {}
+    }
+    ```
+
+    JavaScript equivalente (sin la sintaxis de clase de TypeScript):
+    ```javascript
+    function Persona(nombre, edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+    ```
+
+4. **Compatibilidad:** Dado que TypeScript es un superset de JavaScript, cualquier código JavaScript válido es también código TypeScript. Puedes incorporar gradualmente TypeScript en proyectos existentes sin tener que reescribir todo.
+
+Estas son solo algunas de las diferencias fundamentales. En resumen, TypeScript agrega características de tipado estático y programación orientada a objetos a JavaScript, lo que puede mejorar la robustez y mantenibilidad del código en proyectos más grandes.
+
+5. **Ejecutión y compilación:** Al crear un archivo con ts, se debe transformar a javaScript por que el navegador no entiende TypeScript
+
+6. **Inferencia:** es la capacidad que TypeScript para observar como es un objeto y decir su forma con sus datos y tipos
+ 
