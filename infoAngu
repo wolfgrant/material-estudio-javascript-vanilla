@@ -417,3 +417,46 @@ En Angular, el data binding es un mecanismo que permite la sincronización autom
      ```
 
 Estos son los principales tipos de data binding en Angular. Cada uno tiene su uso específico y facilita la creación de aplicaciones más dinámicas y reactivas al cambio de datos.
+
+En Angular, un observable es una técnica de programación asincrónica que permite gestionar secuencias de eventos o de datos. Los observables son parte de la biblioteca RxJS, que es ampliamente utilizada en Angular para trabajar con operaciones asincrónicas y manipulación de flujos de datos.
+
+A continuación, te mostraré cómo puedes crear un observable básico en Angular utilizando RxJS.
+
+Primero, asegúrate de que RxJS esté instalado en tu proyecto Angular. Si no lo has instalado, puedes hacerlo ejecutando el siguiente comando:
+
+```bash
+npm install rxjs
+```
+
+Ahora, puedes crear un observable simple. Supongamos que deseas crear un observable que emite algunos valores en intervalos de tiempo. Aquí tienes un ejemplo básico:
+
+1. Importa `Observable` y `interval` de RxJS en tu componente:
+
+```typescript
+import { Observable, interval } from 'rxjs';
+```
+
+2. Crea un observable:
+
+```typescript
+const miObservable: Observable<number> = interval(1000);
+```
+
+En este ejemplo, `interval(1000)` crea un observable que emite un valor cada segundo.
+
+3. Suscríbete al observable para recibir y manejar los valores emitidos:
+
+```typescript
+const suscripcion = miObservable.subscribe((valor: number) => {
+  console.log(`Valor emitido: ${valor}`);
+});
+
+// Puedes cancelar la suscripción cuando ya no la necesites
+// suscripcion.unsubscribe();
+```
+
+En este caso, la función que se pasa a `subscribe` se ejecutará cada vez que el observable emita un nuevo valor.
+
+Este es un ejemplo muy básico, y RxJS proporciona una amplia gama de operadores y funciones para manipular observables y trabajar con flujos de datos de manera más compleja. Puedes explorar la documentación de RxJS para aprender más sobre cómo aprovechar al máximo esta biblioteca: [RxJS Documentation](https://rxjs.dev/).
+
+Espero que esta introducción te sea útil para empezar a trabajar con observables en Angular.
