@@ -60,6 +60,40 @@ let indefinido: undefined = undefined;
 let objeto = { clave: "valor" };
 let objetoVacio: {} = {};
 
+//Tipar a tipo function
+
+type State<T> = [() => T, (newState: T) => void];
+
+function useState<T>(initialValue: T): State<T> {
+  // Estado actual
+  let state: T = initialValue;
+
+  // Función para obtener el estado actual
+  function getState(): T {
+    return state;
+  }
+
+  // Función para actualizar el estado
+  function setState(newState: T): void {
+    state = newState;
+
+    // Aquí podrías agregar lógica adicional, como re-renderizar tu componente
+    // o ejecutar efectos secundarios dependiendo del cambio de estado.
+  }
+
+  // Devolver un array con la función para obtener el estado y la función para actualizar el estado
+  return [getState, setState];
+}
+
+const [ hero, setHero ] = useState<string>('Thor')
+
+console.log(hero())
+
+setHero('Iron Man')
+
+console.log(hero())
+
+
 //Unknown
 
 let desconocido: unknown;
@@ -69,6 +103,24 @@ console.log(desconocido, typeof desconocido)
 desconocido = "buenas"
 
 console.log(desconocido, typeof desconocido)
+
+//Array de dos tipos 
+const languages: (string | number)[] = []
+
+languages.push('JavaScript')
+languages.push('TypeScript')
+languages.push(2)
+// languages.push(true) // Error por que pide solamente los tipos que estan puesto al array
+
+//Otra manera de tipar array de dos tipos
+
+const languages2:Array<string | number> = []
+
+languages.push('JavaScript')
+languages.push('TypeScript')
+languages.push(2)
+// languages.push(true) // Error por que pide solamente los tipos que estan puesto al array
+
 
 //Array numbers
 
@@ -158,7 +210,12 @@ console.log(variableUnion)
 variableUnion = 2
 console.log(variableUnion)
 
-//Intersection Types: Combina varios tipos en uno solo.
+type CustomType = 'local' | 'prometedor'       | 'nuevo'
+
+let customtypevariable: CustomType = 'local'
+// let customtypevariable2: CustomType = 'nuevo1' // Error por que espera uno de los union types que se encuentra en el type
+
+//Intersection Types & : Combina varios tipos en uno solo.
 
 interface ConNombre {
     nombre: string;
@@ -462,3 +519,54 @@ let ironMan: Hero = {
 }
 
 console.log(ironMan)
+
+type HexadecimalColor = `#${string}`
+
+const colorHex: HexadecimalColor = '#000000'
+// const colorHexa: HexadecimalColor = '000000' // Error por que espera un #
+
+//Prueba
+
+interface HeroProperties {
+    isActive: boolean,
+    address: {
+        planet: string,
+        city: string
+    }
+}
+
+const addressHero: HeroProperties['address'] = {
+    city: 'Cali',
+    planet: 'Tierra'
+}
+
+console.log(addressHero)
+
+//Type from typeof 
+
+const addressTest = {
+    planet: 'Marte',
+    city: "Byug'onmurtic"
+}
+
+type Address = typeof addressTest;
+
+const addressSubnautic: Address = {
+    planet: 'Jupiter',
+    city: 'Astralord'
+}
+
+//Type from function return quiero recuperar el tipo de lo que retorna la función
+
+
+function createAddress () {
+    return {
+        planet: 'Jupiter',
+        city: 'Astralord'
+    }
+}
+
+type AddressFunction = ReturnType<typeof createAddress>
+
+
+

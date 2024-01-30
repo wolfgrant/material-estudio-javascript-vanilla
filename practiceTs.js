@@ -45,11 +45,43 @@ var nulo = null;
 var indefinido = undefined;
 var objeto = { clave: "valor" };
 var objetoVacio = {};
+function useState(initialValue) {
+    // Estado actual
+    var state = initialValue;
+    // Función para obtener el estado actual
+    function getState() {
+        return state;
+    }
+    // Función para actualizar el estado
+    function setState(newState) {
+        state = newState;
+        // Aquí podrías agregar lógica adicional, como re-renderizar tu componente
+        // o ejecutar efectos secundarios dependiendo del cambio de estado.
+    }
+    // Devolver un array con la función para obtener el estado y la función para actualizar el estado
+    return [getState, setState];
+}
+var _a = useState('Thor'), hero = _a[0], setHero = _a[1];
+console.log(hero());
+setHero('Iron Man');
+console.log(hero());
 //Unknown
 var desconocido;
 console.log(desconocido, typeof desconocido);
 desconocido = "buenas";
 console.log(desconocido, typeof desconocido);
+//Array de dos tipos 
+var languages = [];
+languages.push('JavaScript');
+languages.push('TypeScript');
+languages.push(2);
+// languages.push(true) // Error por que pide solamente los tipos que estan puesto al array
+//Otra manera de tipar array de dos tipos
+var languages2 = [];
+languages.push('JavaScript');
+languages.push('TypeScript');
+languages.push(2);
+// languages.push(true) // Error por que pide solamente los tipos que estan puesto al array
 //Array numbers
 var numeros = [1, 2, 3];
 //Formas diferentes de tipar un array
@@ -115,6 +147,7 @@ variableUnion = "Hola";
 console.log(variableUnion);
 variableUnion = 2;
 console.log(variableUnion);
+var customtypevariable = 'local';
 var persona = {
     nombre: "Juan",
     edad: 25
@@ -311,3 +344,25 @@ var ironMan = {
     name: 'Iron Man'
 };
 console.log(ironMan);
+var colorHex = '#000000';
+var addressHero = {
+    city: 'Cali',
+    planet: 'Tierra'
+};
+console.log(addressHero);
+//Type from typeof 
+var addressTest = {
+    planet: 'Marte',
+    city: "Byug'onmurtic"
+};
+var addressSubnautic = {
+    planet: 'Jupiter',
+    city: 'Astralord'
+};
+//Type from function return quiero recuperar el tipo de lo que retorna la función
+function createAddress() {
+    return {
+        planet: 'Jupiter',
+        city: 'Astralord'
+    };
+}
