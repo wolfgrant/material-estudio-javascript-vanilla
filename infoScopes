@@ -89,6 +89,85 @@ El concepto de "scope" en JavaScript se refiere al contexto en el cual las varia
 
    var cerrar = exterior();
    cerrar(); // 'Exterior'
+
+   Los closures son útiles en varias situaciones en las que necesitas preservar el estado de una variable o acceder a variables en un contexto diferente. Aquí hay algunas situaciones comunes en las que los closures son particularmente útiles:
+
+-. **Datos Privados:**
+   - Puedes utilizar closures para simular variables privadas en JavaScript. Al encapsular variables dentro de una función externa, puedes crear un entorno donde esas variables son inaccesibles desde fuera, pero aún así puedes tener métodos internos que interactúan con esas variables.
+
+    ```javascript
+    function crearContador() {
+      let count = 0;
+
+      return {
+        incrementar: function() {
+          count++;
+          console.log(count);
+        },
+        obtenerValor: function() {
+          return count;
+        }
+      };
+    }
+
+    const miContador = crearContador();
+    miContador.incrementar(); // Incrementa y muestra el valor
+    console.log(miContador.obtenerValor()); // Accede al valor sin modificar directamente
+    ```
+
+-. **Manejo de Eventos Asincrónicos:**
+   - En situaciones donde trabajas con eventos asincrónicos, como manejar clics o solicitudes HTTP, los closures pueden ayudar a mantener el contexto y el estado relevante incluso después de que la función principal haya terminado de ejecutarse.
+
+    ```javascript
+    function manejarClic() {
+      let count = 0;
+
+      return function() {
+        count++;
+        console.log(`Clics: ${count}`);
+      };
+    }
+
+    const clicHandler = manejarClic();
+
+    // Asignar clicHandler a un evento
+    document.getElementById('miBoton').addEventListener('click', clicHandler);
+    ```
+
+-. **Iteraciones y Recursión:**
+   - Los closures son útiles al trabajar con iteraciones y funciones recursivas, ya que permiten que las funciones internas accedan al estado de variables externas incluso después de que la iteración principal o la función recursiva hayan terminado.
+
+    ```javascript
+    function crearIterador(array) {
+      let index = 0;
+
+      return function() {
+        return array[index++];
+      };
+    }
+
+    const iterador = crearIterador([1, 2, 3]);
+
+    console.log(iterador()); // Imprime: 1
+    console.log(iterador()); // Imprime: 2
+    ```
+
+-. **Manejo de Datos en Funciones de Retorno:**
+   - Los closures son útiles cuando necesitas devolver funciones que interactúan con un conjunto específico de datos. Esto es común en patrones como el diseño de fábrica o la curificación.
+
+    ```javascript
+    function multiplicador(factor) {
+      return function(numero) {
+        return factor * numero;
+      };
+    }
+
+    const duplicar = multiplicador(2);
+    console.log(duplicar(5)); // Imprime: 10
+    ```
+
+Estas son solo algunas de las situaciones en las que los closures pueden ser beneficiosos. En general, los closures proporcionan una forma poderosa de manejar el alcance y el estado en JavaScript, permitiendo una mayor flexibilidad y modularidad en el diseño del código.
+##
    ```
 
 4. **`this` en Funciones:**
