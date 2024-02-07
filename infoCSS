@@ -67,3 +67,68 @@ Las pseudo-clases en CSS son selectores especiales que te permiten seleccionar e
    ```
 
 Estas son solo algunas de las pseudo-clases disponibles en CSS. Permiten aplicar estilos de manera más dinámica según el estado o la posición de los elementos en el documento.
+
+
+
+
+_________________________
+
+
+En CSS, la especificidad determina qué regla se aplicará cuando hay conflictos entre estilos. La especificidad se calcula en función de diferentes selectores y tiene un orden jerárquico. Aquí está el orden de especificidad de mayor a menor:
+
+1. **Estilos en línea (`style`):**
+   - La especificidad más alta se asigna a los estilos en línea. Estos son los estilos definidos directamente en el elemento HTML mediante el atributo `style`.
+
+   ```html
+   <div style="color: red;">Este texto tiene un color rojo.</div>
+   ```
+
+2. **ID (`#`):**
+   - Los selectores que utilizan IDs tienen una especificidad alta.
+
+   ```css
+   #miElemento {
+     color: blue;
+   }
+   ```
+
+3. **Clases, atributos y pseudo-clases (`.`, `[]`, `:`):**
+   - Las clases, atributos y pseudo-clases tienen una especificidad moderada.
+
+   ```css
+   .miClase {
+     font-size: 16px;
+   }
+
+   [type="text"] {
+     border: 1px solid #ccc;
+   }
+
+   :hover {
+     background-color: lightgray;
+   }
+   ```
+
+4. **Elementos y pseudo-elementos:**
+   - Los selectores de elementos y pseudo-elementos tienen una especificidad baja.
+
+   ```css
+   p {
+     line-height: 1.5;
+   }
+
+   ::before {
+     content: "Antes del elemento";
+   }
+   ```
+
+5. **Reglas `!important`:**
+   - La regla `!important` anula cualquier regla normal, independientemente de la especificidad.
+
+   ```css
+   .miClase {
+     color: green !important;
+   }
+   ```
+
+Cuando hay conflictos, la regla con la especificidad más alta se aplica. En caso de empate en la especificidad, se aplica la regla que aparece más tarde en el código. Es importante entender la especificidad para evitar problemas y escribir estilos CSS de manera más predecible.
