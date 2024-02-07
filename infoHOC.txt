@@ -1,0 +1,52 @@
+Un HOC(Higher Order Component) es una técnica en React donde una función toma un componente y devuelve un nuevo componente con funcionalidad adicional.Es una forma de reutilizar lógica o comportamiento en varios componentes de manera eficiente y modular.Los HOC no son componentes en sí mismos, sino funciones que toman un componente y devuelven otro.
+
+Aquí hay un ejemplo básico de un HOC:
+
+```jsx
+import React, { useEffect } from 'react';
+
+// Higher Order Component
+const withLogging = (WrappedComponent) => {
+  const WithLogging = (props) => {
+    // useEffect con [] como dependencia simula componentDidMount
+    useEffect(() => {
+      console.log(`Componente ${ WrappedComponent.name } se montó.`);
+      return () => {
+        console.log(`Componente ${ WrappedComponent.name } se desmontará.`);
+      };
+    }, []);
+
+    return <WrappedComponent {...props} />;
+  };
+
+  return WithLogging;
+};
+
+// Componente original
+const MyComponent = () => {
+  return <div>¡Hola, soy un componente!</div>;
+};
+
+// Componente mejorado con el HOC
+const MyComponentWithLogging = withLogging(MyComponent);
+
+// Uso del componente mejorado
+const App = () => {
+  return (
+    <div>
+      <MyComponentWithLogging />
+    </div>
+  );
+};
+
+export default App;
+```
+
+En este ejemplo:
+
+- `withLogging` es el HOC que toma un componente(`WrappedComponent`) y devuelve un nuevo componente(`WithLogging`) con funcionalidad adicional.
+- `MyComponent` es un componente simple.
+- `MyComponentWithLogging` es `MyComponent` mejorado con la funcionalidad de logging proporcionada por el HOC.
+- En la función`withLogging`, se agregan métodos de ciclo de vida(`componentDidMount` y`componentWillUnmount`) para realizar acciones de logging cuando el componente se monta y se desmonta.
+
+Al usar HOCs, puedes encapsular y reutilizar lógica en diferentes componentes sin tener que duplicar código.Es una forma poderosa de abstraer y compartir funcionalidades comunes.Ten en cuenta que con la introducción de React Hooks, algunas de las tareas que solían requerir HOCs pueden abordarse de manera más elegante con Hooks.

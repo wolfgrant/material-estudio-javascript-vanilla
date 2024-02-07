@@ -1,0 +1,19 @@
+En React Native, hay varias bibliotecas y servicios que puedes utilizar para implementar notificaciones push. Algunas de las herramientas más comunes incluyen:
+
+1. **Firebase Cloud Messaging (FCM):** Firebase es una plataforma completa ofrecida por Google, y FCM es su servicio de mensajería en la nube que facilita la implementación de notificaciones push en aplicaciones móviles. Puedes integrar FCM en tu aplicación React Native utilizando la biblioteca `react-native-firebase`.
+
+   - [react-native-firebase](https://rnfirebase.io/): Esta biblioteca proporciona una amplia gama de funcionalidades de Firebase, incluyendo notificaciones push.
+
+2. **OneSignal:** OneSignal es un servicio de notificaciones push que es fácil de integrar en aplicaciones React Native. Ofrece una API simple y una consola de administración en línea.
+
+   - [react-native-onesignal](https://github.com/geektimecoil/react-native-onesignal): Una biblioteca de React Native específica para OneSignal.
+
+3. **Push Notifications en Expo:** Si estás utilizando Expo para el desarrollo de tu aplicación React Native, Expo proporciona un conjunto de APIs para manejar fácilmente notificaciones push.
+
+   - [Expo Push Notifications](https://docs.expo.dev/push-notifications/introduction/): La documentación oficial de Expo sobre notificaciones push.
+
+4. **React Native Push Notification (deprecated):** Anteriormente, la biblioteca `react-native-push-notification` era popular para gestionar notificaciones push en React Native. Sin embargo, ten en cuenta que esta biblioteca ha sido marcada como obsoleta en favor de otras soluciones más modernas.
+
+   - [react-native-push-notification](https://github.com/zo0r/react-native-push-notification): Aunque está marcada como obsoleta, aún puede ser útil en algunos casos.
+
+Al elegir una herramienta, ten en cuenta tus necesidades específicas, como la plataforma de backend que estás utilizando, la complejidad de la configuración y la flexibilidad requerida para tu aplicación. Además, asegúrate de consultar la documentación oficial de la herramienta que elijas para obtener instrucciones detalladas sobre la integración y el uso.

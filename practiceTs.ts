@@ -569,4 +569,7 @@ function createAddress () {
 type AddressFunction = ReturnType<typeof createAddress>
 
 
+//Probar patron bff Revisar nextjs principalmente y nestjs, react testing library
+
+
 

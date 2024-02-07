@@ -22,7 +22,7 @@ La principal diferencia entre cookies (galletas) y el almacenamiento local (loca
 
 En resumen, las cookies son más adecuadas para la comunicación entre el navegador y el servidor, mientras que el almacenamiento local es útil para almacenar datos del lado del cliente de manera más persistente sin tener que enviarlos al servidor con cada solicitud. La elección entre cookies y almacenamiento local depende de los requisitos específicos de la aplicación y del tipo de datos que se están manejando.
 
-Las APIs `localStorage` y `sessionStorage` son las principales formas de almacenamiento local en el navegador web, especialmente en el contexto de JavaScript.
+Las APIs `localStorage` y `` son las principales formas de almacenamiento local en el navegador web, especialmente en el contexto de JavaScript.
 
 Sin embargo, es importante tener en cuenta que el estándar web evoluciona, y nuevas especificaciones y APIs pueden ser introducidas. Siempre es recomendable consultar la documentación más reciente y las especificaciones del navegador para obtener información actualizada sobre las capacidades de almacenamiento local.
 

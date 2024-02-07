@@ -1,0 +1,192 @@
+Un **styled component** es una técnica de estilización en React que utiliza bibliotecas como **Styled Components** o **Emotion** para crear componentes de React con estilos CSS encapsulados. Estos componentes permiten definir estilos de manera declarativa directamente en el código JavaScript/TypeScript, lo que facilita el desarrollo y el mantenimiento del código.
+
+Aquí hay un ejemplo básico utilizando **Styled Components** en React:
+
+1. **Instalación:**
+   Primero, instala `styled-components` en tu proyecto:
+
+   ```bash
+   npm install styled-components
+   ```
+
+2. **Ejemplos de Styled Components:**
+
+   a. **Estilización Básica:**
+      ```jsx
+      import styled from 'styled-components';
+
+      const Button = styled.button`
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #2980b9;
+        }
+      `;
+      ```
+
+   b. **Usando Propiedades Dinámicas:**
+      ```jsx
+      import styled from 'styled-components';
+
+      const Card = styled.div`
+        background-color: ${(props) => (props.isActive ? '#2ecc71' : '#e74c3c')};
+        color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+      `;
+      ```
+
+      Luego, en tu componente React, puedes usar el componente `Card` y pasar propiedades para cambiar los estilos dinámicamente.
+
+   c. **Herencia y Extensiones:**
+      ```jsx
+      import styled from 'styled-components';
+
+      const BaseButton = styled.button`
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      `;
+
+      const PrimaryButton = styled(BaseButton)`
+        background-color: #3498db;
+
+        &:hover {
+          background-color: #2980b9;
+        }
+      `;
+
+      const DangerButton = styled(BaseButton)`
+        background-color: #e74c3c;
+
+        &:hover {
+          background-color: #c0392b;
+        }
+      `;
+      ```
+
+      En este ejemplo, `PrimaryButton` y `DangerButton` heredan estilos del `BaseButton` y luego agregan o modifican estilos específicos.
+
+   d. **Global Styles:**
+      ```jsx
+      import { createGlobalStyle } from 'styled-components';
+
+      const GlobalStyles = createGlobalStyle`
+        body {
+          font-family: 'Arial', sans-serif;
+          background-color: #ecf0f1;
+          color: #333;
+          margin: 0;
+          padding: 0;
+        }
+
+        // Agrega estilos globales según sea necesario
+      `;
+      ```
+
+      Luego, en tu componente principal de React, puedes envolver tu aplicación con `<GlobalStyles />` para aplicar estilos globales.
+
+3. **Uso en Componentes React:**
+   ```jsx
+   import React from 'react';
+
+   const ExampleComponent = () => {
+     return (
+       <div>
+         <Button>Click me</Button>
+         <Card isActive={true}>This is a card</Card>
+         <PrimaryButton>Primary</PrimaryButton>
+         <DangerButton>Danger</DangerButton>
+       </div>
+     );
+   };
+   ```
+
+Puedes crear prácticamente cualquier tipo de componente con Styled Components. Aquí hay algunos ejemplos de componentes comunes que puedes estilizar:
+
+1. **Encabezados (Headers):**
+   ```jsx
+   import styled from 'styled-components';
+
+   const Heading = styled.h1`
+     font-size: 24px;
+     color: #333;
+     margin-bottom: 10px;
+   `;
+   ```
+
+2. **Inputs y Formularios:**
+   ```jsx
+   import styled from 'styled-components';
+
+   const Input = styled.input`
+     padding: 8px;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+   `;
+
+   const Form = styled.form`
+     margin: 20px;
+   `;
+   ```
+
+3. **Contenedores de Secciones:**
+   ```jsx
+   import styled from 'styled-components';
+
+   const SectionContainer = styled.div`
+     background-color: #f0f0f0;
+     padding: 20px;
+     margin: 10px 0;
+     border-radius: 8px;
+   `;
+   ```
+
+4. **Listas:**
+   ```jsx
+   import styled from 'styled-components';
+
+   const List = styled.ul`
+     list-style: none;
+     padding: 0;
+   `;
+
+   const ListItem = styled.li`
+     margin-bottom: 8px;
+   `;
+   ```
+
+5. **Tarjetas (Cards):**
+   ```jsx
+   import styled from 'styled-components';
+
+   const Card = styled.div`
+     background-color: #fff;
+     border: 1px solid #ddd;
+     border-radius: 8px;
+     padding: 20px;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   `;
+   ```
+
+6. **Enlaces (Links):**
+   ```jsx
+   import styled from 'styled-components';
+
+   const StyledLink = styled.a`
+     color: #3498db;
+     text-decoration: none;
+     &:hover {
+       text-decoration: underline;
+     }
+   `;
+   ```
+
+Estos son solo ejemplos básicos, y la versatilidad de Styled Components te permite estilizar cualquier componente que desees. Puedes aplicar estilos a componentes personalizados, como barras de navegación, modales, tablas, etc. La clave es pensar en componentes como unidades reutilizables y aplicar estilos de manera modular para mejorar la mantenibilidad y legibilidad del código.
